@@ -1,0 +1,43 @@
+<div class="companyinfo-control">
+    <div class="page-control">
+        <div class="page-control-header">
+            <div class="control-header-name">Thông tin công ty</div>
+            <a class="control-header-create" href="/admin/companyinfo/edit">
+                <i class="fas fa-edit"></i>
+                Chỉnh sửa
+            </a>
+        </div>
+        <div class="page-control-body">
+            <form class="form-submit-product" method="POST" action="/admin/products/form-submit-action">     
+                <table class="">
+                    <tbody>
+                        <tr>
+                            <th>ĐỊA CHỈ</th>
+                            <td>{{InfoCompany.address}}</td>
+                        </tr>
+                        <tr>
+                            <th>HOTLINE</th>
+                            <td>{{InfoCompany.hotline}}</td>
+                        </tr>
+                        <tr>
+                            <th>EMAIL</th>
+                            <td>{{InfoCompany.email}}</td>
+                        </tr>
+                        <tr>
+                            <th>WEBSITE</th>
+                            <td>{{InfoCompany.website}}</td>
+                        </tr>
+                        <tr>
+                            <th>FANPAGE</th>
+                            <td>{{InfoCompany.fanpage}}</td>
+                        </tr>
+                        <tr>
+                            <th>INSTARGRAM</th>
+                            <td>{{InfoCompany.instargram}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

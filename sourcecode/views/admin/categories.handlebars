@@ -1,0 +1,86 @@
+<div class="categories-control">
+    <div class="page-control">
+        <div class="page-control-header">
+            <div class="control-header-name">Quản lý danh mục sản phẩm</div>
+            <a class="control-header-create" href="/admin/categories/create">
+                <i class="fas fa-plus-circle"></i>
+                Tạo mới danh mục
+                </a>
+        </div>
+        <div class="page-control-body">
+            <form class="form-submit-action form-submit-category" method="POST" action="/admin/categories/form-submit-check">
+                <div class="page-control-features">
+                    <div class="check-all">
+                        <div class="check-all-item check-all-checkbox">
+                            <input class="check-all-input check-all-categories" name = "check-all-category" type="checkbox" onchange="CheckAll(this,'categories-check-cateitem','check-select-actions','check-all-category');">
+                            <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                        </div>
+                        <select class="check-all-item check-select-actions" name="action" required onchange="CheckSelectAction('categories-check-cateitem','check-select-actions','check-all-category');">
+                            <option value="">-- Chọn hành động --</option>
+                            <option value="delete">Xóa</option>
+                            <option value="edit">Sửa</option>
+                        </select>
+                        <button class="check-all-item check-all-btn check-all-category disabled" type="submit" disabled onclick="DeleteByCheck('form-submit-category','check-select-actions','categories-check-cateitem');" >Thực hiện</button>
+                    </div>
+                    <div class="page-control-search">
+                        <input type="text" name="searchonpage" placeholder="Tìm danh mục sản phẩm" onkeyup="SearchOnPage();">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead >
+                        <tr>
+                            <th>Chọn</th>
+                            <th>STT</th>
+                            <th>TÊN DANH MỤC</th>
+                            <th>NGÀY TẠO</th>
+                            <th>NGƯỜI TẠO</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>HÀNH ĐỘNG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each MainCategoryItem}}
+                        <tr>    
+                            <td>
+                                <input class="categories-check-cateitem" name="checkItem" value ="{{this.slug}}" type="checkbox" onclick="CompareToCheck('check-all-category','categories-check-cateitem','check-select-actions','check-all-category');">
+                            </td>
+                            <td>{{sum @index 1}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{formatDate this.createdAt}}</td>
+                            <td></td>
+                            <td>
+                                {{#if this.status}}                           
+                                    <span style="background-color:#28a745;padding:3px 10px;color:#fff;border-radius:3px;">Active</span>
+                                {{else}}
+                                    <span style="background-color:rgb(196,46,46);padding:3px 10px;color:#fff;border-radius:3px;">UnAtive</span>
+                                {{/if}}
+                                
+                            </td>
+                            <td>
+                                <a href="/admin/categories/edit/{{this._id}}" class="page-action-link page-action-edit" alt="Chỉnh sửa danh mục">
+                                    <i class="fas fa-pen"></i>
+                                    Sửa
+                                </a>
+                                <a href="/admin/categories/delete/{{this._id}}" onclick=" DeleteDataItem(this,'categories');" class="page-action-link page-action-delete" idItem ="{{this._id}}" alt="Xóa danh mục">
+                                    <i class="fas fa-trash-alt"></i>
+                                    Xóa
+                                </a>                      
+                            </td>
+                        </tr>
+                        {{else}}
+                        <tr style="border-bottom:0;">
+                            <td colspan="6" style="padding-top:50px;border:0;">
+                                Bạn chưa tạo danh mục sản phẩm nào. Hãy tạo mới danh mục.
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{!-- Form submit delete data item --}}
+<form method="POST" class="delete-form" action=""></form>

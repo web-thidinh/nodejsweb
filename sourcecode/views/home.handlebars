@@ -1,0 +1,184 @@
+<div class="header-bottom">
+        <div class="grid">
+            <div class="main-banner">
+                <div class="banner-right">
+                    <a href="#">
+                        <div style="background-image: url(/images/Banner/bnl.jpg);" class="banner-right-img"></div>
+                    </a>
+                    <a href="#">
+                        <div style="background-image: url(/images/Banner/bnl1.jpg);margin-top:5px;" class="banner-right-img"></div>
+                    </a>
+                </div>
+                <div class="main-carousel">
+                    <div class="carousel-list">
+                        <img id="1" class="main-carousel-item curent-slide" src="/images/Banner/bn1.jpg" alt="">
+                        <img id="2" class="main-carousel-item" src="/images/Banner/bn2.jpg" alt="">
+                        <img id="3" class="main-carousel-item" src="/images/Banner/bn3.jpg" alt="">
+                    </div>
+                    <div class="carousel-button">
+                        <button class="carousel-btn prev-btn"><i class="carousel-icon fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn"><i class="carousel-icon fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="carousel-dot">
+                        <span class="carousel-dot-item active"></span>
+                        <span class="carousel-dot-item"></span>
+                        <span class="carousel-dot-item"></span>
+                    </div>
+                </div> 
+            </div>
+        </div>  
+    </div>
+<div class="container">
+    <div class="grid">               
+        
+        {{!-- <div class="main-category-intro">
+            {{#each MainCategoriesIntro}}
+            <div class="category-intro-item">
+                <a href="/home-detail/{{this.slug}}" class="category-intro-link">
+                    <div class="category-intro-body">
+                        <img src="{{this.image}}" alt="" class="category-intro-img">
+                    </div>
+                    <div class="category-intro-text">{{this.name}}</div>
+                </a>
+            </div>
+            {{/each}}
+        </div> --}}
+
+        {{!-- <div class="main-ads-banner">
+            <img src="images/e99560eba58aacfaaa821bd029e43c52_xxhdpi.jpg" alt="">
+        </div> --}}
+
+        <div class="main-category">
+            <div class="main-category-header">DANH MỤC SẢN PHẨM</div>
+            <div class="main-category-body">
+                <ul class="main-category-list">
+                    {{#each MaincategoryItem}}
+                        {{#if this.status}}
+                            <li class="main-category-item">
+                                <a href="/danh-muc/{{this.slug}}" categoryname="{{this.name}}" class="main-category-link">
+                                    <img class="main-category-img" src="/uploads/{{this.image}}" alt="">
+                                    <p class="main-category-text">{{this.name}}</p>
+                                </a>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+        {{!-- <div class="main-ads-banner">
+            <img src="images/e99560eba58aacfaaa821bd029e43c52_xxhdpi.jpg" alt="">
+        </div> --}}
+
+        {{!-- <div class="main-flash-sale">
+            <div class="flash-sale-header">
+                <div class="flash-sale-header-item">FLASH SALE</div>
+                <div class="flash-sale-header-item"></div>
+                <div class="flash-sale-header-item">
+                    <a href="" class="flash-sale-header-link">Xem Tất Cả</a>
+                </div>
+            </div>
+            <div class="flash-sale-body">
+                <div class="flash-sale-body-item">
+                    <a href="" class="flash-sale-body-link">
+                        <img src="" alt="" class="flash-sale-body-img">
+                        <p class="flash-sale-body-text"></p>
+                    </a>
+                </div>
+            </div>
+        </div> --}}
+
+        {{!-- <div class="main-ads-banner">
+            <div class="ads-banner-item">
+                <a href="" class="ads-banner-link">
+                    <img src="images/ads1.jpg" alt="">
+                </a>
+            </div>
+            <div class="ads-banner-item">
+                <a href="" class="ads-banner-link">
+                    <img src="images/ads2.jpg" alt="">
+                </a>
+            </div>
+            <div class="ads-banner-item">
+                <a href="" class="ads-banner-link">
+                    <img src="images/ads3.jpg" alt="">
+                </a>
+            </div>
+        </div> --}}
+
+        <div class="main-products">
+            <div class="main-products-header">SẢN PHẨM NỔI BẬT</div>
+            <div class="main-products-body row">
+                {{#each SpecialProduct}}
+                    <div class="col xl-2 lg-3 md-4 sm-6 col-6">
+                        <a href="/san-pham/{{this.slug}}" class="main-product-item">
+                            <div class="main-product-image">
+                                <img class="main-product-img"src="/uploads/{{this.image}}" alt="">
+                            </div>
+                            <div class="main-product-info">
+                                <div class="main-product-name">{{this.name}}</div>
+                                <div class="main-product-detail">
+                                    <div class="main-product-price  product-price-display">{{formatmoney this.productprice}}</div>
+                                    <div class="main-product-sold"></div>
+                                </div>
+                                {{!-- <div class="main-product-actions">
+                                    <div class="product-action-item product-action-save">Thêm vào giỏ hàng</div>
+                                    <div class="product-action-item product-action-buy">Đặt hàng</div>
+                                </div> --}}
+                            </div>                       
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="main-products">
+            <div class="main-products-header">SẢN PHẨM MỚI</div>
+            <div class="main-products-body row">
+                {{#each NewProduct}}
+                    <div class="col xl-2 lg-3 md-4 sm-6 col-6">
+                        <a href="/san-pham/{{this.slug}}" class="main-product-item">
+                            <div class="main-product-image">
+                                <img class="main-product-img"src="/uploads/{{this.image}}" alt="">
+                            </div>
+                            <div class="main-product-info">
+                                <div class="main-product-name">{{this.name}}</div>
+                                <div class="main-product-detail">
+                                    <div class="main-product-price product-price-display">{{formatmoney this.productprice}}</div>
+                                    <div class="main-product-price product-price-truth"  style="display:none">{{this.productprice}}</div>
+                                    <div class="main-product-sold"></div>
+                                </div>
+                                {{!-- <div class="main-product-actions">
+                                    <div class="product-action-item product-action-save">Thêm vào giỏ hàng</div>
+                                    <div class="product-action-item product-action-buy">Đặt hàng</div>
+                                </div> --}}
+                            </div>                       
+                        </a>
+                    </div>
+                {{/each}}               
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Format money
+    //function formatMoney(inputValue){
+    //    return (inputValue.split('').reverse().reduce(function(value,nextValue,currentIndex){
+    //
+    //        if(currentIndex % 3){
+    //            return nextValue + value
+    //        }
+    //        else{
+    //            return (nextValue + '.') + value
+    //        }
+    //    })) + ' đ'
+    //}
+    //var PriceShow = document.querySelectorAll('.product-price-display')
+    //for(i=0;i<PriceShow.length;i++){
+    //    PriceShow[i].innerHTML = formatMoney(PriceShow[i].nextElementSibling.innerHTML.toString())
+    //}
+    var SearchInput = document.querySelector('input[name="search"]')
+    SearchInput.onkeyup = function(){
+    }
+</script>

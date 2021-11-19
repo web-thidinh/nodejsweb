@@ -1,0 +1,238 @@
+<div class="page-order">
+    <div class="grid">
+        <div class="page-order-message">{{message}}</div>
+        <div class="page-order-content">
+            <div class="page-order-header">
+                <div class="page-order-name">Đơn hàng</div>
+            </div>
+            <div class="page-order-body">
+                <div class="page-body-item">
+                    <div class="page-order-product">
+                        <img src="/uploads/{{ProductItem.image}}" alt="">
+                        <div class="page-order-info">
+                            <div class="order-product-name">{{ProductItem.name}}</div>
+                            <div class="order-product-price" style="color:red;">{{formatmoney ProductItem.productprice}}</div>
+                        </div>
+                    </div>
+                    <div class="page-order-number product-number">
+                        <label class="product-number-header" for="">Số lượng:</label>
+                        <div class="product-number-body">
+                            <button class="decrease-number"><i class="fas fa-minus"></i></button>
+                            <input name="prdnumber" type="number" value="1">
+                            <button class="increase-number"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="page-order-total">
+                        <label for="">Tổng tiền: </label>
+                        <div class="order-total-price"></div>
+                    </div>
+                </div>
+                <div class="page-body-item page-order-form" action="">
+                    <div class="form-order-header">Thông tin đặt hàng</div>
+                    <div class="form-order-body">
+                        <div class="form-body-left">
+                            <div class="form-body-top">
+                                <div class="form-order-group">
+                                    <label class="form-order-label" for="customer">Họ và tên</label>
+                                    <input class="form-order-input input-data customer-input" type="text" onkeyup="RenderData()">
+                                </div>
+                                <div class="form-order-group">
+                                    <label class="form-order-label" for="customer">Số điện thoại</label>
+                                    <input class="form-order-input input-data phonenumber-input" type="text" onkeyup="RenderData()">
+                                </div>
+                            </div>
+                            <div class="form-order-group">
+                                <label class="form-order-label" for="customer">Địa chỉ nhận hàng</label>
+                                <input class="form-order-input input-data address-input" type="text" onkeyup="RenderData()">
+                            </div>
+                            <div class="form-order-group">
+                                <label class="form-order-label" for="customer" >Phương thức thanh toán</label>
+                                <select class="form-order-input input-data select-payment" onchange="RenderData()" type="text">
+                                    <option value="">-- Chọn phương thức thanh toán --</option>
+                                    <option value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>
+                                </select>
+                                <span class="select-error" style="color:red;font-size:1.5rem;"></span>
+                            </div>
+                        </div>
+                        <div class="form-body-right">
+                            <img src="/uploads/banner-form.jpeg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <form class="page-order-confirm" method="POST" action="/dat-hang/tao-moi" style="display:none;">
+                    <div class="order-confirm-header">
+                        <div class="order-confirm-name">Xác nhận thông tin đơn hàng</div>
+                    </div>
+                    <div class="order-confirm-body">
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Sản phẩm</div>
+                            <div class="order-confirm-data" style="height: auto;background-color:#a4c7c7">
+                                <img src="/uploads/{{ProductItem.image}}" alt="">
+                                <div class="order-confirm-prdname">{{ProductItem.name}}</div>
+                            </div>
+                        </div>
+                        <div class="order-confirm-group" style="display: none;">
+                            <div class="order-confirm-label">Danh mục sản phẩm</div>
+                            <input class="order-confirm-data" name="productcategory" value="{{ProductItem.parent}}">
+                        </div>
+                        <div class="order-confirm-group" style="display: none;">
+                            <div class="order-confirm-label">Tên sản phẩm</div>
+                            <input class="order-confirm-data" name="productname" value="{{ProductItem.name}}">
+                        </div>
+                        <div class="order-confirm-group" style="display: none;">
+                            <div class="order-confirm-label">Giá sản phẩm</div>
+                            <input class="order-confirm-data" name="productprice" readonly value="{{ProductItem.productprice}}">
+                        </div>
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Số lượng</div>
+                            <input class="order-confirm-data" name="productnumber" readonly value="">
+                        </div>
+                        <div class="order-confirm-group" style="display: none;">
+                            <div class="order-confirm-label" >Tổng tiền</div>
+                            <input class="order-confirm-data" name="totalprice" value="">
+                        </div>
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Tổng tiền</div>
+                            <input class="order-confirm-data total-price-display" readonly value="">
+                        </div>
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Người nhận hàng</div>
+                            <input class="order-confirm-data" name="customer" readonly value="">
+                        </div>
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Số điện thoại</div>
+                            <input class="order-confirm-data" name="phonenumber" readonly value="">
+                        </div>
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Địa chỉ nhận hàng</div>
+                            <input class="order-confirm-data" name="address" readonly value="">
+                        </div>
+                        <div class="order-confirm-group">
+                            <div class="order-confirm-label">Phương thức thanh toán</div>
+                            <input class="order-confirm-data" name="payment" readonly value="">
+                        </div>
+                    </div>
+                </form>
+                <div class="page-order-submit">
+                    <button class="page-order-btn">Xác nhận đặt hàng</button>
+                </div>
+                <div class="page-order-success">{{{SuccessIcon}}}{{Success}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var SuccessMessage = document.querySelector('.page-order-success')
+    if(SuccessMessage.innerHTML !== ''){
+        SuccessMessage.style.display = 'block'
+        setTimeout(function(){
+            SuccessMessage.style.display = 'none'
+        },3000)
+    }
+    function FormatMoney(value){
+        value = value.toString()
+        return(
+          value.split('').reverse().reduce(function(totalValue,nextValue,currentIndex){
+            if(currentIndex % 3){
+              return nextValue + totalValue
+            }
+            else{
+              return (nextValue + '.') + totalValue
+            }
+          })) + ' đ'
+    }
+
+    var ProductNumber = document.querySelector('input[name="prdnumber"]')
+    var Increase = document.querySelector('.increase-number')
+    var Decrease = document.querySelector('.decrease-number')
+    
+    var TotalPrice = document.querySelector('input[name="totalprice"]')
+    var ProductPrice = document.querySelector('input[name="productprice"]')
+    var PriceDisplay = document.querySelector('.order-total-price')
+    var PriceDisplay1 = document.querySelector('.total-price-display')
+    var ProductNumber1 = document.querySelector('input[name="productnumber"]')
+
+    TotalPrice.value = ProductNumber.value * ProductPrice.value
+    PriceDisplay.innerHTML = FormatMoney(TotalPrice.value)
+    PriceDisplay1.value = FormatMoney(TotalPrice.value)
+    ProductNumber1.value = ProductNumber.value
+
+    Decrease.onclick = function(){
+        if(ProductNumber.value > 1){
+            ProductNumber.value = Number(ProductNumber.value) - 1
+            TotalPriceValue()
+        }
+    }
+    Increase.onclick =function(){
+        ProductNumber.value = Number(ProductNumber.value) + 1
+        TotalPriceValue()
+    }
+        console.log(ProductPrice)
+        console.log(ProductNumber)
+    function TotalPriceValue(){
+        console.log(ProductPrice)
+        console.log(ProductNumber)
+        TotalPrice.value = ProductNumber.value * Number(ProductPrice.value)
+        PriceDisplay.innerHTML = FormatMoney(TotalPrice.value)
+        PriceDisplay1.value = FormatMoney(TotalPrice.value)
+        ProductNumber1.value = ProductNumber.value
+        //FormatTotalPrice.value = FormatMoney(TotalPrice.value)
+    }
+
+    var AddressInput = document.querySelector('.address-input')
+    var CustomerInput = document.querySelector('.customer-input')
+    var PhoneInput = document.querySelector('.phonenumber-input')
+    var PaymentSelect = document.querySelector('.select-payment')
+
+    var Address = document.querySelector('input[name="address"]')
+    var Customer = document.querySelector('input[name="customer"]')
+    var PhoneNumber = document.querySelector('input[name="phonenumber"]')
+    var Payment = document.querySelector('input[name="payment"]')
+
+    var CountInputData = document.querySelectorAll('.input-data')
+    var PageOrderConfirm = document.querySelector('.page-order-confirm')
+    
+    function RenderData(){
+        Address.value = AddressInput.value
+        Customer.value = CustomerInput.value
+        PhoneNumber.value = PhoneInput.value
+        Payment.value = PaymentSelect.value
+        if( AddressInput.value != '' && CustomerInput.value != '' && PhoneInput.value != '' && PaymentSelect.value != ''){
+            PageOrderConfirm.style.display = "block"
+        }
+        else{
+            PageOrderConfirm.style.display = "none"
+        }
+    }   
+
+    function CheckError(value,message){
+        value.placeholder = message
+            value.classList.add('error')
+            value.onfocus = function(){
+                value.classList.remove('error')
+            }
+    }
+    var PageOrderSubmit = document.querySelector('.page-order-btn')
+    var SelectError = document.querySelector('.select-error')
+    var FormOrder = document.querySelector('.page-order-confirm')
+    PageOrderSubmit.onclick = function(event){
+        event.preventDefault()
+        if(CustomerInput.value == ''){
+            CheckError(CustomerInput,'Vui lòng nhập tên người nhận.')
+        }
+        if(PhoneInput.value == ''){
+            CheckError(PhoneInput,'Vui lòng nhập số điện thoại.')
+        }
+        if(AddressInput.value == ''){
+            CheckError(AddressInput,'Vui lòng nhập địa chỉ nhận hàng.')
+        }
+        if(PaymentSelect.value == ''){
+            SelectError.innerHTML = "Vui lòng chọn phương thức thanh toán."
+        }
+        else{
+            FormOrder.submit()
+        }
+    }
+</script>

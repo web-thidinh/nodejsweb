@@ -1,0 +1,32 @@
+<div class="home-search">
+    <div class="grid">
+        <div class="home-search-content">
+            <div class="row">
+                {{#if Item.length}}
+                    {{#each Item}}
+                        <div class="col xl-2">
+                            <a href="/san-pham/{{this.slug}}" class="product-item">
+                                <div class="product-item-image">
+                                    <img src="/uploads/{{this.image}}" alt="">
+                                </div>
+                                <div class="product-item-detail">
+                                    <div class="product-name">{{this.name}}</div>
+                                    <div class="product-detail">
+                                        <div class="product-price">{{formatmoney this.productprice}}</div>
+                                        <div class="product-sold"></div>
+                                    </div>
+                                    <div class="product-item-actions">
+                                        <div class="product-action product-action-save">Lưu vào giỏ hàng</div>
+                                        <div class="product-action product-action-buy">Đặt hàng</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <div class="home-search-error">Không có sản phẩm nào khớp với từ khóa.</div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

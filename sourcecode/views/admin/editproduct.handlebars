@@ -1,0 +1,130 @@
+<div class="edit-product">
+    <div class="page-edit">
+        <div class="page-edit-header">
+            <div class="edit-header-name">Chỉnh sửa sản phẩm</div>
+            <a class="edit-header-back" href="/admin/products">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-edit-body">
+            <form method="POST" action="" class="form-edit" enctype='multipart/form-data'>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Danh mục sản phẩm:</div>                    
+                    <select class="form-edit-select" name="parent" readonly onchange="CreateParentSlug()">
+                        <option value="{{ProductItem.parent}}">{{ProductItem.parent}}</option>
+                        <option value="None">-- Chọn danh mục --</option>
+                        {{#each CategoryItem}}
+                            <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group" style="display: none;">
+                    <div class="form-edit-name" for="name">Parent Slug:</div>
+                    <input class="form-edit-input" type="text" name="parentslug" value="{{ProductItem.parentslug}}" required>
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Tên sản phẩm:</div>
+                    <input class="form-edit-input" type="text" name="name" onkeyup="editSlug()" value="{{ProductItem.name}}" required>
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Giá sản phẩm:</div>
+                    <input class="form-edit-input" type="number" name="productprice" required value="{{ProductItem.productprice}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Số lượng:</div>
+                    <input class="form-edit-input" type="number" name="productindex" required value="{{ProductItem.productindex}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Ảnh thumnail:</div>
+                    <div class="form-upload-images form-upload-thumnail">
+                        <div class="form-upload-item">
+                            <img class="form-upload-img" src="/uploads/{{ProductItem.image}}" alt="">
+                        </div>
+                    </div>
+                    <label class = "choose-image-btn" for="file">Chọn ảnh</label>
+                    <input class="form-edit-input" style="display:none" id="file" value="C:\\fakepath\\{{ProductItem.image}}" type="file" name="image"  onchange="DisplayImageFile(this);">
+                    <span class="form-edit-error"></span>
+                </div>            
+                {{!-- <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Thư viện ảnh:</div>
+                    <div class="form-upload-images form-upload-library">
+                        {{#each ProductItem.imageslibrary}}
+                        <div class="form-upload-item">
+                            <img class="form-upload-img" src="/uploads/{{this}}" alt="">
+                        </div>
+                        {{/each}}
+                    </div>
+                    <label class = "choose-image-btn chooselibrary" for="filelibrary">Chọn ảnh</label>
+                    <input class="form-edit-input" style="display: none;" id="filelibrary" value ="" type="file" name="imageslibrary" onchange="DisplayMultiImageFile(this);" multiple>
+                    <span class="form-edit-error"></span>
+                </div>  --}}
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Mô tả:</div>
+                    <textarea class="form-edit-input" style="width:80%; height:150px;" name="description">{{ProductItem.description}}</textarea>
+                    <span class="form-edit-error"></span>
+                </div> 
+                <div class="form-edit-group" style="display:none">
+                    <div class="form-edit-name" for="image">Slug:</div>
+                    <input class="form-edit-input" type="text" name="slug" required value="{{ProductItem.slug}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="active">Trạng thái:</div>
+                    {{#if ProductItem.status}}
+                        <input class="form-edit-checkbox" checked="checked" type="radio" name="status" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);">Avtive</label>
+                        <input class="form-edit-checkbox" type="radio" name="status" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)">UnAvtive</label>
+                    {{else}}
+                        <input class="form-edit-checkbox" type="radio" name="status" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);">Avtive</label>
+                        <input class="form-edit-checkbox"  checked="checked" type="radio" name="status" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)">UnAvtive</label>
+                    {{/if}}
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="active">Sản phẩm mới:</div>
+                    {{#if ProductItem.new}}
+                        <input class="form-edit-checkbox" checked="checked" type="radio" name="new" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);">Yes</label>
+                        <input class="form-edit-checkbox" type="radio" name="new" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)">No</label>
+                    {{else}}
+                        <input class="form-edit-checkbox" type="radio" name="new" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);">Yes</label>
+                        <input class="form-edit-checkbox"  checked="checked"  type="radio" name="new" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)">No</label>
+                    {{/if}}
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="active">Sản phẩm nổi bật:</div>
+                    {{#if ProductItem.special}}
+                        <input class="form-edit-checkbox" checked="checked" type="radio" name="special" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);">Yes</label>
+                        <input class="form-edit-checkbox" type="radio" name="special" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)">No</label>
+                    {{else}}
+                        <input class="form-edit-checkbox" type="radio" name="special" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);">Yes</label>
+                        <input class="form-edit-checkbox"  checked="checked"  type="radio" name="special" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)">No</label>
+                    {{/if}}
+                    <span class="form-edit-error"></span>
+                </div>
+                <button class="form-edit-submit" type="submit">Lưu</button>
+                <div class="page-edit-error">{{errEdit}}</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+</script>

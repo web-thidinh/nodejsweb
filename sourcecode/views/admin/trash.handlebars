@@ -1,0 +1,343 @@
+<div class="trash-control">
+    <div class="page-control">
+        <div class="page-control-header">
+            <div class="control-header-name">Quản lý thùng rác</div>
+        </div>
+        
+        <div class="page-control-body">
+            <div class="trash-control-item">
+                <div class="trash-control-name trash-control-categories">Danh mục sản phẩm vừa xóa</div>
+                <form class="trash-category-form" method="POST" action="/admin/trash/categories-form-submit">                   
+                    <div class="page-control-features">
+                        <div class="check-all">
+                            <div class="check-all-item check-all-checkbox">
+                                <input class="check-all-input check-all-trash-category" type="checkbox" onchange="CheckAll(this,'trash-category-item','select-category-action','submit-category-action');">
+                                <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                            </div>
+                            <select class="check-all-item check-select-actions select-category-action" name="action" required onchange="CheckSelectAction('trash-category-item','select-category-action','submit-category-action')">
+                                <option value="">-- Hành động --</option>
+                                <option value="delete">Xóa vĩnh viễn</option>
+                                <option value="restore">Khôi phục</option>
+                            </select>
+                            <button class="check-all-item check-all-btn submit-category-action disabled" type="submit" disabled onclick="DeleteByCheck('trash-category-form','select-category-action','trash-category-item');" >Thực hiện</button>
+                        </div>
+                        <div class="page-control-search">
+                            <input type="text" name="searchonpage" placeholder="Tìm danh mục sản phẩm" onkeyup="SearchOnPage();">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <table class="data-table trash-categories-table">
+                        <thead >
+                            <tr>
+                                <th>Chọn</th>
+                                <th>STT</th>
+                                <th>TÊN DANH MỤC</th>
+                                <th>NGÀY TẠO</th>
+                                <th>TRẠNG THÁI</th>
+                                <th>HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each CategoryDeleteItem}}
+                            <tr>   
+                                <td>
+                                    <input class="trash-category-item" name="checkItem" value ="{{this.slug}}" type="checkbox" onclick="CompareToCheck('check-all-trash-category','trash-category-item','select-category-action','submit-category-action');">
+                                </td> 
+                                <td>{{sum @index 1}}</td>
+                                <td>{{this.name}}</td>
+                                <td></td>
+                                <td>
+                                    {{#if this.status}}                           
+                                        <span style="background-color:rgb(12, 172, 12);padding:3px 10px;color:#fff;border-radius:3px;">Active</span>
+                                    {{else}}
+                                        <span style="background-color:rgb(196, 5, 5);padding:3px 10px;color:#fff;border-radius:3px;">UnAtive</span>
+                                    {{/if}}
+                                    
+                                </td>
+                                <td>
+                                    <a href="/admin/trash/restore/{{this.slug}}" onclick="RestoreItem(this,'categories');" style="color:rgb(5, 102, 5);" class="trash-action-link trash-action-restore" slug="{{this.slug}}">
+                                        <i class="fas fa-trash-restore"></i>
+                                        Khôi phục
+                                    </a>
+                                    <a href="/admin/trash/delete/{{this.slug}}" onclick="DeleteItem(this,'categories')" style="color:rgb(151, 0, 0);" class="trash-action-link trash-action-delete" slug="{{this.slug}}" alt="Xóa danh mục">
+                                        <i class="fas fa-trash-alt"></i>
+                                        Xóa vĩnh viễn
+                                    </a>                      
+                                </td>
+                            </tr>
+                            {{else}}
+                            <tr>
+                                <td colspan="6" style="padding:20px 0 ;border:0;">
+                                    Danh mục vừa xóa trống.
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="trash-control-item">
+                <div class="trash-control-name trash-control-products">Sản phẩm vừa xóa</div>
+                <form class="trash-product-form" method="POST" action="/admin/trash/products-form-submit">                   
+                    <div class="page-control-features">
+                        <div class="check-all">
+                            <div class="check-all-item check-all-checkbox">
+                                <input class="check-all-input checkall-trash-product" type="checkbox" onchange="CheckAll(this,'trash-product-item','select-product-action','submit-product-action');">
+                                <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                            </div>
+                            <select class="check-all-item check-select-actions select-product-action" name="action" required onchange="CheckSelectAction('trash-product-item','select-product-action','submit-product-action')">
+                                <option value="">-- Hành động --</option>
+                                <option value="delete">Xóa vĩnh viễn</option>
+                                <option value="restore">Khôi phục</option>
+                            </select>
+                            <button class="check-all-item check-all-btn submit-product-action disabled" type="submit" disabled onclick="DeleteByCheck('trash-product-form','select-product-action','trash-product-item');">Thực hiện</button>
+                        </div>
+                        <div class="page-control-search">
+                            <input type="text" name="searchonpage" placeholder="Tìm sản phẩm" onkeyup="SearchOnPage();">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <table class="data-table trash-categories-table">
+                        <thead >
+                            <tr>
+                                <th>Chọn</th>
+                                <th>STT</th>
+                                <th>TÊN DANH MỤC</th>
+                                <th>NGÀY TẠO</th>
+                                <th>TRẠNG THÁI</th>
+                                <th>HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each ProductDeleteItem}}
+                            <tr>   
+                                <td>
+                                    <input class="trash-product-item" name="checkItem" value ="{{this.slug}}" type="checkbox" onclick="CompareToCheck('checkall-trash-product','trash-product-item','select-product-action','submit-product-action');">
+                                </td> 
+                                <td>{{sum @index 1}}</td>
+                                <td>{{this.name}}</td>
+                                <td></td>
+                                <td>
+                                    {{#if this.status}}                           
+                                        <span style="background-color:rgb(12, 172, 12);padding:3px 10px;color:#fff;border-radius:3px;">Active</span>
+                                    {{else}}
+                                        <span style="background-color:rgb(196, 5, 5);padding:3px 10px;color:#fff;border-radius:3px;">UnAtive</span>
+                                    {{/if}}
+                                    
+                                </td>
+                                <td>
+                                    <a href="/admin/trash/restore/{{this.slug}}" onclick="RestoreItem(this,'products')" style="color:rgb(5, 102, 5);" class="trash-action-link trash-action-restore" slug="{{this.slug}}">
+                                        <i class="fas fa-trash-restore"></i>
+                                        Khôi phục
+                                    </a>
+                                    <a href="/admin/trash/delete/{{this.slug}}" onclick="DeleteItem(this,'products')" style="color:rgb(151, 0, 0);" class="trash-action-link trash-action-delete" slug="{{this.slug}}" alt="Xóa danh mục">
+                                        <i class="fas fa-trash-alt"></i>
+                                        Xóa vĩnh viễn
+                                    </a>                      
+                                </td>
+                            </tr>
+                            {{else}}
+                            <tr>
+                                <td colspan="6" style="padding:20px 0 ;border:0;">
+                                    Danh mục vừa xóa trống.
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="trash-control-item">
+                <div class="trash-control-name trash-control-orders">Hóa đơn vừa xóa</div>
+                <form class="trash-order-form" method="POST" action="/admin/trash/orders-form-submit">                   
+                    <div class="page-control-features">
+                        <div class="check-all">
+                            <div class="check-all-item check-all-checkbox">
+                                <input class="check-all-input checkall-trash-order" type="checkbox" onchange="CheckAll(this,'trash-order-item','select-order-action','submit-order-action');">
+                                <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                            </div>
+                            <select class="check-all-item check-select-actions select-order-action" name="action" required onchange="CheckSelectAction('trash-order-item','select-order-action','submit-order-action')">
+                                <option value="">-- Hành động --</option>
+                                <option value="delete">Xóa vĩnh viễn</option>
+                                <option value="restore">Khôi phục</option>
+                            </select>
+                            <button class="check-all-item check-all-btn submit-order-action disabled" type="submit" disabled onclick="DeleteByCheck('trash-order-form','select-order-action','trash-order-item');">Thực hiện</button>
+                        </div>
+                        <div class="page-control-search">
+                            <input type="text" name="searchonpage" placeholder="Tìm sản phẩm" onkeyup="SearchOnPage();">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <table class="data-table trash-categories-table">
+                        <thead >
+                            <tr>
+                                <th>Chọn</th>
+                                <th>STT</th>
+                                <th style="width:20%;">TÊN SẢN PHẨM</th>
+                                <th>TÊN KHÁCH HÀNG</th>
+                                <th>SỐ ĐIỆN THOẠI</th>
+                                <th>SỐ LƯỢNG</th>
+                                <th>TỔNG TIỀN</th>
+                                <th>NGÀY XÓA</th>
+                                <th>HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each OrderItem}}
+                            <tr>   
+                                <td>
+                                    <input class="trash-order-item" name="checkItem" value ="{{this._id}}" type="checkbox" onclick="CompareToCheck('checkall-trash-order','trash-order-item','select-order-action','submit-order-action');">
+                                </td> 
+                                <td>{{sum @index 1}}</td>
+                                <td style="text-align:left;padding-left:15px;overflow:hidden;-webkit-line-clamp:1;display: -webkit-box;line-height:30px;height:30px;text-overflow: ellipsis;-webkit-box-orient: vertical;">{{this.productname}}</td>
+                                <td>{{this.customer}}</td>
+                                <td>{{this.phonenumber}}</td>
+                                <td>{{this.productnumber}}</td>
+                                <td>{{this.totaltprice}}</td>
+                                <td>{{formatDate this.deletedAt}}</td>
+                                <td>
+                                    <a href="/admin/trash/restore/{{this._id}}" slug = "{{this._id}}" onclick="RestoreItem(this,'orders')" style="color:rgb(5, 102, 5);" class="trash-action-link trash-action-restore">
+                                        <i class="fas fa-trash-restore"></i>
+                                        Khôi phục
+                                    </a>
+                                    <a href="/admin/trash/delete/{{this._id}}" slug = "{{this._id}}" onclick="DeleteItem(this,'orders')" style="color:rgb(151, 0, 0);" class="trash-action-link trash-action-delete" alt="Xóa danh mục">
+                                        <i class="fas fa-trash-alt"></i>
+                                        Xóa vĩnh viễn
+                                    </a>                      
+                                </td>
+                            </tr>
+                            {{else}}
+                            <tr>
+                                <td colspan="6" style="padding:20px 0 ;border:0;">
+                                    Danh mục vừa xóa trống.
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="trash-control-item">
+                <div class="trash-control-name trash-control-orders">Trang tĩnh vừa xóa</div>
+                <form class="trash-sitehtml-form" method="POST" action="/admin/trash/sitehtmls-form-submit">                   
+                    <div class="page-control-features">
+                        <div class="check-all">
+                            <div class="check-all-item check-all-checkbox">
+                                <input class="check-all-input checkall-trash-sitetml" type="checkbox" onchange="CheckAll(this,'trash-sitehtml-item','select-sitehtml-action','submit-sitehtml-action');">
+                                <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                            </div>
+                            <select class="check-all-item check-select-actions select-sitehtml-action" name="action" required onchange="CheckSelectAction('trash-sitehtml-item','select-sitehtml-action','submit-sitehtml-action')">
+                                <option value="">-- Hành động --</option>
+                                <option value="delete">Xóa vĩnh viễn</option>
+                                <option value="restore">Khôi phục</option>
+                            </select>
+                            <button class="check-all-item check-all-btn submit-sitehtml-action disabled" type="submit" disabled onclick="DeleteByCheck('trash-sitehtml-form','select-sitehtml-action','trash-sitehtml-item');">Thực hiện</button>
+                        </div>
+                        <div class="page-control-search">
+                            <input type="text" name="searchonpage" placeholder="Tìm sản phẩm" onkeyup="SearchOnPage();">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <table class="data-table trash-categories-table">
+                        <thead >
+                            <tr>
+                                <th>Chọn</th>
+                                <th>STT</th>
+                                <th style="width:20%;">TÊN TRANG TĨNH</th>
+                                <th>NGÀY XÓA</th>
+                                <th>HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each SiteHtmlItem}}
+                            <tr>   
+                                <td>
+                                    <input class="trash-sitehtml-item" name="checkItem" value ="{{this._id}}" type="checkbox" onclick="CompareToCheck('checkall-trash-sitehtml','trash-sitehtml-item','select-sitehtml-action','submit-sitehtml-action');">
+                                </td> 
+                                <td>{{sum @index 1}}</td>
+                                <td>{{this.name}}</td>
+                                <td>{{formatDate this.deletedAt}}</td>
+                                <td>
+                                    <a href="/admin/trash/restore/{{this._id}}" slug = "{{this._id}}" onclick="RestoreItem(this,'sitehtmls')" style="color:rgb(5, 102, 5);" class="trash-action-link trash-action-restore">
+                                        <i class="fas fa-trash-restore"></i>
+                                        Khôi phục
+                                    </a>
+                                    <a href="/admin/trash/delete/{{this._id}}" slug = "{{this._id}}" onclick="DeleteItem(this,'sitehtmls')" style="color:rgb(151, 0, 0);" class="trash-action-link trash-action-delete" alt="Xóa danh mục">
+                                        <i class="fas fa-trash-alt"></i>
+                                        Xóa vĩnh viễn
+                                    </a>                      
+                                </td>
+                            </tr>
+                            {{else}}
+                            <tr>
+                                <td colspan="6" style="padding:20px 0 ;border:0;">
+                                    Trang tĩnh vừa xóa trống.
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- OverLay Confirm Mesage --}}
+<div class="confirm-layout">
+    <div class="confirm-overlay" onclick="HideOverlay('confirm-layout');"></div>
+    <div class="confirm-box">
+        <div class="confirm-box-header">Xóa danh mục</div>
+        <div class="confirm-box-body">Hành động này không thể khôi phục. Bạn có chắc chắn muốn xóa danh mục này?</div>
+        <div class="confirm-box-control">
+            <button class="confirm-box-btn confirm-box-sumbit">Xóa vĩnh viễn</button>
+            <button class="confirm-box-btn confirm-box-cancel" onclick="HideOverlay('confirm-layout');">Hủy</button>
+        </div>
+    </div>
+</div>
+<div class="confirm-layout confirm-restore-layout">
+    <div class="confirm-overlay" onclick="HideOverlay('confirm-restore-layout');"></div>
+    <div class="confirm-box">
+        <div class="confirm-box-header">Khôi phục danh mục</div>
+        <div class="confirm-box-body">Khôi phục danh mục này?</div>
+        <div class="confirm-box-control">
+            <button class="confirm-box-btn confirm-box-sumbit confirm-restore-btn">Khôi phục</button>
+            <button class="confirm-box-btn confirm-box-cancel" onclick="HideOverlay('confirm-restore-layout');">Hủy</button>
+        </div>
+    </div>
+</div>
+{{!-- End OverLay Confirm Message --}}
+
+<form method="POST" class="restore-form" action=""></form>
+<form method="POST" class="delete-form" action=""></form>
+
+{{!-- Confirm Message --}}
+<script>
+    //Restore Categories Function
+    function RestoreItem(TrashItem,PageRestore){
+        event.preventDefault()
+        var FormConfirmRestore = document.querySelector('.confirm-restore-layout')
+        FormConfirmRestore.style.display = "block"
+        var slug = TrashItem.getAttribute("slug")
+        var RestoreForm = document.querySelector('.restore-form') 
+        var ConfirmRestore = document.querySelector('.confirm-restore-btn')
+        ConfirmRestore.onclick = function(){
+            RestoreForm.action = '/admin/trash/' + PageRestore +'/restore/' + slug
+            RestoreForm.submit()
+            console.log(RestoreForm.action)
+        }
+    }
+    //Delete Categories Function
+    function DeleteItem(TrashItem,PageDelete){
+        event.preventDefault()
+        var overlay = document.querySelector('.confirm-layout')
+        overlay.style.display = "block"  
+        var slug = TrashItem.getAttribute("slug")
+        var DeleteForm = document.querySelector('.delete-form') 
+        var DeleteBtn = document.querySelector('.confirm-box-sumbit')
+        DeleteBtn.onclick = function(){
+            DeleteForm.action = '/admin/trash/'+ PageDelete +'/delete/' + slug
+            DeleteForm.submit()
+        }
+    }
+
+</script>

@@ -1,0 +1,241 @@
+<div class="page-detail">
+    <div class="page-cart">
+        <div class="grid">
+            <div class="page-cart-content">
+                <div class="page-cart-header">
+                    <div class="page-cart-name">Giỏ hàng của bạn</div>
+                </div>
+                <div class="page-cart-body">
+                    <div class="cart-product-delete">{{{SuccessIcon}}}{{DeleteSuccess}}</div>
+
+                    <div class="page-cart-category row">
+                        <div class="cart-category-item col xl-2">
+                            <input class="check-all-cart" name="check-all-item" type="checkbox" onchange="CheckAll(this,'cart-item-check');">
+                            <label for="check-all-item">Chọn tất cả</label>
+                        </div>
+                        <div class="cart-category-item col xl-4">
+                            Sản phẩm
+                        </div>
+                        <div class="cart-category-item col xl-2">
+                            Số lượng
+                        </div>
+                        <div class="cart-category-item col xl-2">
+                            Số tiền
+                        </div>
+                        <div class="cart-category-item col xl-2">
+                            Hành động
+                        </div>
+                    </div>
+                    <div class="page-cart-products">
+                        {{#if ListCartItem}}
+                            {{!-- {{#each CartProduct}}
+                                    <div class="page-cart-item row">
+                                        <div class="cart-product-item col xl-1">
+                                            <input class="cart-item-check" type="checkbox" onclick="CompareToCheck('check-all-cart','cart-item-check');">
+                                        </div>
+                                        <div class="cart-product-item cart-item-product col xl-5">
+                                            <img class="cart-product-img"src="/uploads/{{this.image}}" alt="">
+                                            <div class="cart-product-info">
+                                                <div class="cart-product-name">{{this.name}}</div>
+                                                <input type="number" class="cart-product-price" style="display:none;" value="{{this.productprice}}">
+                                                <div class="cart-product-priceshow">{{formatmoney this.productprice}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-product-item cart-item-number col xl-2">
+                                            <div class="product-number-body">
+                                                <button type="button" onclick="DecreaseProductNumber(this);" class="decrease-number"><i class="fas fa-minus"></i></button>
+                                                <input class="productnumber" onchange="SaveValue(this);" name="productnumber" type="number" value="{{CartList.ProductNumber}}" autocomplete="off">
+                                                <button type="button" onclick="IncreaseProductNumber(this);" class="increase-number"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <input type="number" class="cart-product-item cart-item-total col xl-2" style="">
+                                        <div class="cart-product-item cart-item-totalshow col xl-2"></div>
+                                        <a href="/gio-hang/xoa/{{this._id}}" iditem="{{this._id}}" class="cart-product-item cart-item-action col xl-2"  onclick=" DeleteDataItem(this);">Xóa</a>
+                                    </div>
+                            {{/each}} --}}
+                            {{#each ListCartItem}}
+                                <div class="page-cart-item row">
+                                    <div class="cart-product-item col xl-1">
+                                        <input class="cart-item-check" type="checkbox" onclick="CompareToCheck('check-all-cart','cart-item-check');">
+                                    </div>
+                                    <div class="cart-product-item cart-item-product col xl-5">
+                                        <img class="cart-product-img"src="/uploads/{{this.image}}" alt="">
+                                        <div class="cart-product-info">
+                                            <div class="cart-product-name">{{this.name}}</div>
+                                            <input type="number" class="cart-product-price" style="display:none;" value="{{this.productprice}}">
+                                            <div class="cart-product-priceshow"></div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-product-item cart-item-number col xl-2">
+                                        <div class="product-number-body">
+                                            <button type="button" onclick="DecreaseProductNumber(this);" class="decrease-number"><i class="fas fa-minus"></i></button>
+                                            <input class="productnumber" onchange="SaveValue(this);" name="productnumber" type="number" value="{{this.ProductNumber}}" autocomplete="off">
+                                            <button type="button" onclick="IncreaseProductNumber(this);" class="increase-number"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <input type="number" class="cart-product-item cart-item-total col xl-2" style="">
+                                    <div class="cart-product-item cart-item-totalshow col xl-2"></div>
+                                    <a href="/gio-hang/xoa/{{this._id}}" iditem="{{this._id}}" class="cart-product-item cart-item-action col xl-2"  onclick=" DeleteDataItem(this);">Xóa</a>
+                                </div>
+                            {{/each}}
+                        {{else}}
+                        <div class="cart-product-empty">
+                            {{#each ListCartItem}}
+                                <div>{{this.ProductId}}</div>
+                                <div>{{this.ProductNumber}}</div>
+                            {{!-- Giỏ hàng trống. --}}
+                            {{/each}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="page-cart-order">
+                        <div class="page-cart-total">
+                            <label for="" style="margin-right:10px;">Tổng tiền</label>
+                            <input type="number" class="total-value" style="display: none;" value="0">
+                            <div class="total-value-show" style="color: red;">0</div>
+
+                        </div>
+                        <a type="button">ĐẶT HÀNG</a>
+                    </div>
+                    <div class="page-cart-number" style="display: none;">
+                        {{#each CartList}}
+                            <input type="text" class="cart-product-number" value="{{this.ProductNumber}}">
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="POST" class="delete-form" action=""></form>
+
+<script>
+    function FormatMoney(value){
+        value = value.toString()
+        return(
+          value.split('').reverse().reduce(function(totalValue,nextValue,currentIndex){
+            if(currentIndex % 3){
+              return nextValue + totalValue
+            }
+            else{
+              return (nextValue + '.') + totalValue
+            }
+          })) + ' đ'
+    }
+    //Delete data item
+    function DeleteDataItem(DeleteItem){
+        event.preventDefault();
+        var IdItem = DeleteItem.getAttribute('iditem')
+        var DeleteForm = document.querySelector('.delete-form')
+        DeleteForm.action = '/gio-hang/xoa/' + IdItem
+        DeleteForm.submit()
+    }
+
+    var SuccessMessage = document.querySelector('.cart-product-delete')
+    if(SuccessMessage.innerHTML !== ''){
+        SuccessMessage.style.display = 'block'
+        setTimeout(function(){
+            SuccessMessage.style.display = 'none'
+        },3000)
+    }
+
+    var CartNumberDisplay = document.querySelectorAll('.productnumber')
+    var CartNumber = document.querySelectorAll('.cart-product-number')
+    for(i=0;i<CartNumberDisplay.length;i++){
+        CartNumberDisplay[i].value = CartNumber[i].value
+    }
+
+    var ItemTotal = document.querySelectorAll('.cart-item-total')
+    var ProductPrice = document.querySelectorAll('.cart-product-price')
+    var ProductNumber = document.querySelectorAll('.productnumber')
+    var ItemTotalShow = document.querySelectorAll('.cart-item-totalshow')
+    var TotalPrice = document.querySelector('.total-value')
+    var TotalPriceShow = document.querySelector('.total-value-show')
+    for(i=0;i<ItemTotal.length;i++){
+      ItemTotal[i].value = Number(ProductPrice[i].value) * Number(ProductNumber[i].value)
+      ItemTotalShow[i].innerHTML = FormatMoney(ItemTotal[i].value)
+    }
+    //Decrease number
+    function DecreaseProductNumber(ThisButton){
+        var ProductNumber = ThisButton.nextElementSibling
+        if(ProductNumber.value > 1){
+            ProductNumber.value = Number(ProductNumber.value) - 1
+        }
+        var ItemTotal = document.querySelectorAll('.cart-item-total')
+        var ProductPrice = document.querySelectorAll('.cart-product-price')
+        var PrdNumber = document.querySelectorAll('.productnumber')
+        for(i=0;i<ItemTotal.length;i++){
+          ItemTotal[i].value = ProductPrice[i].value * PrdNumber[i].value 
+          ItemTotalShow[i].innerHTML = FormatMoney(ItemTotal[i].value)
+        }
+    }
+    //Increase number
+    function IncreaseProductNumber(ThisButton){
+        var ProductNumber = ThisButton.previousElementSibling
+        ProductNumber.value = Number(ProductNumber.value) + 1
+        var ItemTotal = document.querySelectorAll('.cart-item-total')
+        var ItemTotal = document.querySelectorAll('.cart-item-total')
+        var ProductPrice = document.querySelectorAll('.cart-product-price')
+        var PrdNumber = document.querySelectorAll('.productnumber')
+        for(i=0;i<ItemTotal.length;i++){
+          ItemTotal[i].value = ProductPrice[i].value * PrdNumber[i].value 
+          ItemTotalShow[i].innerHTML = FormatMoney(ItemTotal[i].value)
+        }
+    }
+    //Check all data item
+    function CheckAll(CheckAllBtn,CheckItem){
+      var TotalPrice = document.querySelector('.total-value')
+      var TotalPriceItem = document.querySelectorAll('.cart-item-total')
+      var CheckItemCount = document.querySelectorAll('.'+CheckItem+'')
+      var isChecked = CheckAllBtn.checked
+      var CheckItemCount = document.querySelectorAll('.' + CheckItem + '')
+      for(i=0;i<CheckItemCount.length;i++){
+          CheckItemCount[i].checked = isChecked
+      }
+      var CheckedCount = document.querySelectorAll('input[class=\"'+ CheckItem +'\"]:checked')
+      if(isChecked){
+        TotalPrice.value = 0
+        for(i=0;i<TotalPriceItem.length;i++){
+            TotalPrice.value = Number(TotalPrice.value) + Number(TotalPriceItem[i].value)
+        }
+      }
+      else{
+        TotalPrice.value = 0
+      }
+    TotalPriceShow.innerHTML = FormatMoney(TotalPrice.value)
+    }
+    //Compare checked item and check all button
+    function CompareToCheck(CheckAllBtn,CheckItem){
+        var CheckAll = document.querySelector('.'+ CheckAllBtn +'')
+        var CheckItemCount = document.querySelectorAll('\.' + CheckItem + '')
+        var TotalPrice = document.querySelector('.total-value')
+        var TotalPriceItem = document.querySelectorAll('.cart-item-total')
+        var CheckedCount = document.querySelectorAll('input[class=\"' + CheckItem + '\"]:checked')
+        for(i=0;i<CheckItemCount.length;i++){
+            var isChekedAll = CheckedCount.length === CheckItemCount.length
+            CheckAll.checked = isChekedAll
+            if(isChekedAll){
+                TotalPrice.value = 0
+                for(i=0;i<TotalPriceItem.length;i++){
+                    console.log(TotalPriceItem[i].value)
+                    TotalPrice.value = Number(TotalPrice.value) + Number(TotalPriceItem[i].value)
+                }
+            }
+            else{
+
+                for(i=0;i<CheckItemCount.length;i++){
+                    if(CheckItemCount[i].checked){
+                    }
+                    else{
+                        TotalPrice.value = Number(TotalPrice.value) - Number(CheckItemCount[i].value)
+                    }
+                }
+            }
+            TotalPriceShow.innerHTML = FormatMoney(TotalPrice.value)
+        }
+        
+    }
+    
+    
+</script>

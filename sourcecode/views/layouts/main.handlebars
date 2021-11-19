@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/base.css">   
+    <link rel="stylesheet" href="/css/grid.css"> 
+    <link rel="stylesheet" href="/fonts/fontawesome-free-5.15.4-web/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        {{>header}}
+        {{{body}}}
+        {{>footer}}
+    </div>
+    <script src="/javascript/main.js"></script>
+    
+</body>
+</html>
+<script>
+
+    function FormatMoney(value){
+        value = value.toString()
+        return(
+          value.split('').reverse().reduce(function(totalValue,nextValue,currentIndex){
+            if(currentIndex % 3){
+              return nextValue + totalValue
+            }
+            else{
+              return (nextValue + '.') + totalValue
+            }
+          })) + ' đ'
+    }
+    
+    function ShowUserAction(){
+      var userinfo = document.querySelector('.header-user-actions')
+      var user = document.querySelector('.header-navbar-user')
+      userinfo.style.display =  "block"
+      var over = document.querySelector('.overscreen')
+      over.style.display = "block"
+      over.onclick = function(){
+        this.style.display = "none"
+        userinfo.style.display =  "none"
+      }
+    }
+    
+    function SaveValue(SaveItem){
+      alert('thi')
+        localStorage.setItem(''+ SaveItem.class + '','' + SaveItem.value +'')
+    }
+    
+    function GetSaveValue(SaveItem){
+        return localStorage.getItem(SaveItem)
+    }
+
+    
+
+    
+</script>

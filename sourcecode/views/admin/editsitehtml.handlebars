@@ -1,0 +1,33 @@
+<div class="create-product">
+    <div class="page-create">
+        <div class="page-create-header">
+            <div class="create-header-name">Chỉnh sửa trang tĩnh</div>
+            <a class="create-header-back" href="/admin/sitehtml">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-create-body">
+            <div class="page-create-error">{{errCreate}}</div>
+            <form method="POST" action="" class="form-create" style="padding-left: 15px;">
+                <div class="form-create-group">
+                    <div class="form-create-name" for="name">Tên trang tĩnh</div>
+                    <input class="form-create-input" type="text" value="{{SiteHtmlItem.name}}" name="name" onkeyup="CreateSlug()" required>
+                    <span class="form-create-error"></span>
+                </div>
+                <div class="form-create-group" style="display: none;">
+                    <div class="form-create-name" for="name">Slug:</div>
+                    <input class="form-create-input" type="text" value="{{SiteHtmlItem.slug}}" name="slug">
+                    <span class="form-create-error"></span>
+                </div>
+                <div class="form-create-group" style="display: block;">
+                    <div class="form-create-name" for="image">Nội dung:</div>
+                    <textarea class="form-create-input" style="width:100%; height:400px;font-size:1.6rem;" name="content">{{SiteHtmlItem.content}}</textarea>
+                    <span class="form-create-error"></span>
+                </div>         
+                
+                <button class="form-create-submit" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

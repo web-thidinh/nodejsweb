@@ -1,0 +1,32 @@
+<div class="page-detail">
+    <div class="page-product">
+        <div class="grid">
+            <div class="product-page-header">
+                <div class="product-page-name">Tất cả sản phẩm</div>
+            </div>
+            <div class="product-page-body">
+                <div class="row">
+                    {{#each ProductItem}}
+                        <div class="col xl-2">
+                            <a href="/san-pham/{{this.slug}}" class="product-item">
+                                    <div class="product-item-image">
+                                        <img src="/uploads/{{this.image}}" alt="">
+                                    </div>
+                                    <div class="product-item-detail">
+                                        <div class="product-name">{{this.name}}</div>
+                                        <div class="product-detail">
+                                            <div class="product-price">{{formatmoney this.productprice}}</div>
+                                        </div>
+                                        {{!-- <div class="product-item-actions">
+                                            <div class="product-action product-action-save">Lưu vào giỏ hàng</div>
+                                            <div class="product-action product-action-buy">Đặt hàng</div>
+                                        </div> --}}
+                                    </div>
+                                </a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

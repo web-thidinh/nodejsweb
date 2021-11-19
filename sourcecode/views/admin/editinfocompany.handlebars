@@ -1,0 +1,46 @@
+<div class="edit-companyinfo">
+    <div class="page-edit">
+        <div class="page-edit-header">
+            <div class="edit-header-name">Chỉnh sửa thông tin công ty</div>
+            <a class="edit-header-back" href="/admin/categories">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-edit-body">
+            <form method="POST" action="" class="form-edit">
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Địa chỉ:</div>
+                    <input class="form-edit-input" type="text" name="address"  value="{{InfoCompany.address}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Hotline:</div>
+                    <input class="form-edit-input" type="text" name="hotline" value="{{InfoCompany.hotline}}" >
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Email:</div>
+                    <input class="form-edit-input" type="text" name="email" value="{{InfoCompany.email}}" >
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Website:</div>
+                    <input class="form-edit-input" type="text" name="website" value="{{InfoCompany.website}}" >
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Fanpage:</div>
+                    <input class="form-edit-input" type="text" name="fanpage" value="{{InfoCompany.fanpage}}" >
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="image">Instargram:</div>
+                    <input class="form-edit-input" type="text" name="instargram" value="{{InfoCompany.instargram}}" >
+                    <span class="form-edit-error"></span>
+                </div>
+                <button class="form-edit-submit" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

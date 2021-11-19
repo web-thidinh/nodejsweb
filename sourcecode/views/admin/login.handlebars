@@ -1,0 +1,81 @@
+<div class="admin-login">   
+    <div class="admin-login-icons">
+            <i class="admin-login-icon fas fa-users-cog"></i>
+        </div>
+    <div class="admin-login-header">Đăng nhập quản trị Online Shop</div>
+    <div class="admin-login-body">
+        <form class="admin-login-form" action="" method="POST">
+            <div class="admin-login-group">
+                <input class="admin-login-input" name="adminname" type="text" placeholder="Tên đăng nhập" value="{{valueAdmin}}" autocomplete=""> 
+                <span class="admin-login-error">{{errAdmin}}</span> 
+            </div>
+            <div class="admin-login-group">
+                <input class="admin-login-input" name="password" type="password" placeholder="Mật khẩu" value="{{valuePass}}" autocomplete="">
+                <div class="admin-input-icon">
+                    <i class="show-icon fas fa-eye" style="display:none"></i>
+                    <i class="hide-icon fas fa-eye-slash"></i>
+                </div>
+                <span class="admin-login-error">{{errPass}}</span>
+            </div>
+            <button class="admin-login-btn" type="submit">Đăng nhập</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    var HidePass = document.querySelector('.hide-icon')
+    var Input = document.querySelector('input[name="password"]')
+    var ShowPass = document.querySelector('.show-icon')
+    HidePass.onclick = function(){
+        Input.type = "text"
+        this.style.display = "none"
+        ShowPass.style.display = "block"
+    }
+    ShowPass.onclick = function(){
+        Input.type = "password"
+        this.style.display = "none"
+        HidePass.style.display = "block"
+    }
+
+    var FormLogin = document.querySelector('.admin-login-form')
+    var FormInput = document.querySelectorAll('.admin-login-input')
+    var FormError = document.querySelectorAll('.admin-login-error')
+    var FormBtn   = document.querySelector('.admin-login-btn')
+
+    FormLogin.onsubmit = function(){      
+        for(i=0;i<FormInput.length;i++){
+            if(FormInput[i].value == ''){
+                FormInput[0].placeholder = "Tên đăng nhập không được để trống"    
+                FormInput[1].placeholder = "Mật khẩu không được để trống"   
+                FormInput[i].classList.add('error-input')
+            } 
+            FormInput[0].onfocus = function(){
+                this.classList.remove('error-input')
+                FormInput[0].placeholder = "Tên đăng nhập" 
+                   
+            }
+            FormInput[1].onfocus = function(){
+                this.classList.remove('error-input')
+                FormInput[1].placeholder = "Mật khẩu"  
+                FormError[1].innerHTML = ""  
+            }
+        }  
+        
+        var ErrorIndex = document.querySelectorAll('.error-input').length
+        if(ErrorIndex == 0){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    for(i=0;i<FormInput.length;i++){
+        FormInput[0].onfocus =  function(){
+            FormError[0].innerHTML = ""
+        }
+        FormInput[1].onfocus =  function(){
+            FormError[1].innerHTML = ""
+        }
+    }
+</script>

@@ -1,0 +1,117 @@
+<div class="create-product">
+    <div class="page-create">
+        <div class="page-create-header">
+            <div class="create-header-name">Tạo mới sản phẩm</div>
+            <a class="create-header-back" href="/admin/products">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-create-body">
+            <div class="page-create-error">{{errCreate}}</div>
+            <form method="POST" action="" class="form-create" enctype='multipart/form-data'>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="image">Danh mục sản phẩm:</div>                    
+                    <select class="form-create-select" name="parent" required onchange="CreateParentSlug()">
+                        <option value="None">-- Chọn danh mục --</option>
+                        {{#each CategoryItem}}
+                            <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <span class="form-create-error"></span>
+                </div>   
+                <div class="form-create-group" style="display:none">
+                    <div class="form-create-name" for="name">Parent Slug:</div>
+                    <input class="form-create-input" type="text" name="parentslug" required>
+                    <span class="form-create-error"></span>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="name">Tên sản phẩm:</div>
+                    <input class="form-create-input" type="text" name="name" onkeyup="CreateSlug()"required>
+                    <span class="form-create-error"></span>
+                </div>
+                <div class="form-create-group" style="display:none">
+                    <div class="form-create-name" for="image">Slug:</div>
+                    <input class="form-create-input" type="text" name="slug" required>
+                    <span class="form-create-error"></span>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="name">Giá sản phẩm:</div>
+                    <input class="form-create-input" type="number" name="productprice" required>
+                    <span class="form-create-error"></span>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="image">Số lượng:</div>
+                    <input class="form-create-input" type="number" name="productindex" required>
+                    <span class="form-create-error"></span>
+                </div>            
+                <div class="form-create-group">
+                    <div class="form-create-name" for="name">Ảnh thumnail:</div>
+                    <div class="form-upload-images form-upload-thumnail">
+                        <div class="form-upload-item">
+                            <img class="form-upload-img" src="" alt="">
+                        </div>
+                    </div>
+                    <label class = "choose-image-btn" for="file">Chọn ảnh</label>
+                    <input class="form-create-input" style="display:none" id="file" type="file" name="image"  onchange="DisplayImageFile(this);">
+                    <span class="form-create-error"></span>
+                </div>            
+                {{!-- <div class="form-create-group">
+                    <div class="form-create-name" for="name">Thư viện ảnh:</div>
+                    <div class="form-upload-images form-upload-library">
+                    </div>
+                    <label class = "choose-image-btn" for="filelibrary">Chọn ảnh</label>
+                    <input class="form-create-input" style="display: none;" id="filelibrary" type="file" name="imageslibrary" onchange="DisplayMultiImageFile(this);" multiple>
+                    <span class="form-create-error"></span>
+                </div> --}}
+                <div class="form-create-group">
+                    <div class="form-create-name" for="image">Mô tả:</div>
+                    <textarea class="form-create-input" style="width:80%; height:150px;" name="description"></textarea>
+                    <div class="form-create-error"></div>
+                </div>         
+                <div class="form-create-group">
+                    <div class="form-create-name" for="active">Trạng thái:</div>
+                    <input class="form-create-checkbox" checked="checked" type="radio" name="status" value="1">
+                    <label class="form-create-lable" style="background-color: rgb(16, 161, 65);">Avtive</label>
+                    <input class="form-create-checkbox" type="radio" name="status" value="0">
+                    <label class="form-create-lable" style="background-color: rgb(212, 40, 40)">UnAvtive</label>
+                    <div class="form-create-error"></div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="active">Sản phẩm mới:</div>
+                    <input class="form-create-checkbox" checked="checked" type="radio" name="new" value="1">
+                    <label class="form-create-lable" style="background-color: rgb(16, 161, 65);">Yes</label>
+                    <input class="form-create-checkbox" type="radio" name="new" value="0">
+                    <label class="form-create-lable" style="background-color: rgb(212, 40, 40)">No</label>
+                    <div class="form-create-error"></div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="active">Sản phẩm nổi bật:</div>
+                    <input class="form-create-checkbox" checked="checked" type="radio" name="special" value="1">
+                    <label class="form-create-lable" style="background-color: rgb(16, 161, 65);">Yes</label>
+                    <input class="form-create-checkbox" type="radio" name="special" value="0">
+                    <label class="form-create-lable" style="background-color: rgb(212, 40, 40)">No</label>
+                    <div class="form-create-error"></div>
+                </div>
+                <button class="form-create-submit" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    //Show Images Store
+    var LibraryBtn = document.querySelector('.form-create-upload')
+    var AdminStore = document.querySelector('.admin-store')
+    var CloseStore = document.querySelector('.admin-store-close')
+    var OverStore = document.querySelector('.admin-store-overlay')
+    //LibraryBtn.onclick = function(){
+    //    AdminStore.style.display = "block"
+    //}
+    //CloseStore.onclick = function(){
+    //    AdminStore.style.display = "none"
+    //}
+    //OverStore.onclick = function(){
+    //    AdminStore.style.display = "none"
+    //}
+    
+</script>

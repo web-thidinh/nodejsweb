@@ -1,0 +1,43 @@
+<div class="dashboard-control">
+    <div class="dashboard-control-header">
+        <div class="dashboard-header-name">Quản trị Online Shop</div>
+    </div>
+    <div class="dashboard-control-body row">
+        <div class="col xl-2">
+            <a href="/admin/orders" class="dashboard-control-item dashboard-control-order">
+                <div class="control-item-name">Đơn hàng</div>
+                <div class="control-item-count">--- {{OrderItem}} ---</div>
+            </a>
+        </div>
+        <div class="col xl-2">
+            <a href="/admin/categories" class="dashboard-control-item dashboard-control-categories">
+                <div class="control-item-name">Danh mục sản phẩm</div>
+                <div class="control-item-count">--- {{CategoryCount}} ---</div>
+            </a>
+        </div>
+        <div class="col xl-2">
+            <a href="/admin/products" class="dashboard-control-item dashboard-control-products">
+                <div class="control-item-name">Sản phẩm</div>
+                <div class="control-item-count">--- {{ProductCount}} ---</div>
+            </a>
+        </div>
+        <div class="col xl-2">
+            <a href="/admin/sitehtmls" class="dashboard-control-item dashboard-control-sitehtmls">
+                <div class="control-item-name">Trang tĩnh</div>
+                <div class="control-item-count">--- {{SitetmlCount}} ---</div>
+            </a>
+        </div>
+        <div class="col xl-2">
+            <a href="/admin/admins" class="dashboard-control-item dashboard-control-admins">
+                <div class="control-item-name">Quản trị viên</div>
+                <div class="control-item-count">--- {{AdminCount}} ---</div>
+            </a>
+        </div>
+        <div class="col xl-2">
+            <a href="/admin/trash" class="dashboard-control-item dashboard-control-trash">
+                <div class="control-item-name">Thùng rác</div>
+                <div class="control-item-count">--- {{sums DeletedCategory DeletedProduct OrderDeletedItem SiteHtmlDeleted}} ---</div>
+            </a>
+        </div>
+    </div>
+</div>

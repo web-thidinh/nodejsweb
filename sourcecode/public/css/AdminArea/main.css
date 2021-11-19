@@ -1,0 +1,943 @@
+.ckeditor p {
+  line-height: 1.6rem;
+  margin-block-start: 0em;
+  margin-block-end: 0em; }
+
+.form-upload-images {
+  display: flex;
+  align-items: flex-end;
+  width: 62px;
+  height: 62px;
+  border: 1px solid #767676; }
+
+.form-upload-library {
+  height: 70px;
+  width: 350px; }
+
+.form-upload-item {
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  margin-right: 10px; }
+
+.form-upload-close {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #fff; }
+
+.form-upload-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain; }
+
+.page-control {
+  padding: 15px;
+  height: 100vh;
+  overflow: hidden; }
+  .page-control .page-control-header {
+    display: flex;
+    padding: 0 0 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #b3b3b3; }
+  .page-control .control-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .page-control .control-header-create {
+    color: #fff;
+    display: block;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid #fff;
+    background-color: var(--main-color); }
+  .page-control .control-header-create:hover {
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    background-color: #fff; }
+  .page-control .page-control-body {
+    width: 100%;
+    height: 87%;
+    overflow-y: scroll;
+    padding-bottom: 50px; }
+  .page-control .data-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse; }
+  .page-control .data-table thead {
+    color: #fff;
+    font-size: 1.4rem;
+    background-color: var(--main-color); }
+  .page-control .data-table thead tr th {
+    padding: 3px 0;
+    border: none;
+    border-right: 1px solid #fff; }
+  .page-control .data-table tbody tr td {
+    border: none;
+    font-size: 1.3rem;
+    border-left: 1px solid var(--main-color); }
+  .page-control .data-table tbody tr:nth-child(even) {
+    background-color: #d1d1d1; }
+  .page-control .data-table tbody tr td:first-child {
+    border-left: 0; }
+  .page-control .page-action-link {
+    padding: 3px 5px;
+    border-radius: 3px;
+    text-decoration: none; }
+  .page-control .page-action-edit {
+    color: #056605; }
+  .page-control .page-action-edit:hover {
+    color: #fff;
+    background-color: #056605; }
+  .page-control .page-action-delete {
+    color: #970000; }
+  .page-control .page-action-delete:hover {
+    color: #fff;
+    background-color: #970000; }
+
+.page-create {
+  padding: 15px;
+  height: 100vh;
+  overflow: hidden; }
+  .page-create .page-create-header {
+    display: flex;
+    padding: 0 0 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--bodder-color); }
+  .page-create .create-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .page-create .create-header-back {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid #fff;
+    background-color: var(--main-color); }
+  .page-create .category-header-back:hover {
+    color: var(--main-color);
+    background-color: #fff;
+    border: 1px solid var(--main-color); }
+  .page-create .page-create-body {
+    height: 93%;
+    overflow-y: scroll; }
+  .page-create .form-create {
+    margin-top: 30px;
+    padding-left: 50px;
+    padding-bottom: 50px; }
+  .page-create .form-create-group {
+    display: flex;
+    line-height: 30px;
+    margin-bottom: 30px; }
+  .page-create .form-create-name {
+    width: 180px;
+    font-weight: bold;
+    font-size: 1.6rem; }
+  .page-create .form-create-input {
+    line-height: 25px;
+    outline: none;
+    padding-left: 10px;
+    width: 400px;
+    border-radius: 3px;
+    border: 1px solid var(--bodder-color); }
+  .page-create .form-create-select {
+    height: 30px; }
+  .page-create .form-create-input.error {
+    border: 1px solid red; }
+  .page-create .form-create-upload {
+    width: 100px;
+    height: 31px;
+    outline: none;
+    margin-left: 10px; }
+  .page-create .form-create-checkbox {
+    margin: 0 10px -10px 0; }
+  .page-create .choose-image-btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 0 15px;
+    right: 0;
+    height: 30px;
+    margin-left: 12px;
+    border-radius: 3px;
+    background-color: var(--main-color); }
+  .page-create .form-create-lable {
+    color: #fff;
+    padding: 0 10px;
+    font-size: 1.5rem;
+    margin-right: 40px;
+    border-radius: 5px; }
+  .page-create .form-create-error {
+    color: red;
+    height: 25px;
+    line-height: 23px;
+    font-size: 1.3rem; }
+  .page-create .form-create-submit {
+    color: #fff;
+    height: 30px;
+    border: 0;
+    width: 100px;
+    cursor: pointer;
+    margin-top: 50px;
+    border-radius: 3px;
+    outline: none;
+    background-color: var(--main-color); }
+  .page-create .form-create-submit:hover {
+    color: var(--main-color);
+    background-color: #fff;
+    border: 1px solid var(--main-color); }
+  .page-create .page-create-error {
+    color: #fff;
+    margin-top: 15px;
+    border-radius: 3px;
+    background-color: #e93838;
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center; }
+
+.page-edit {
+  padding: 15px;
+  height: 100vh;
+  overflow: hidden; }
+  .page-edit .page-edit-header {
+    display: flex;
+    padding: 0 0 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--bodder-color); }
+  .page-edit .edit-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .page-edit .edit-header-back {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: var(--main-color);
+    text-decoration: none;
+    border: 1px solid #fff; }
+  .page-edit .edit-header-back:hover {
+    color: var(--main-color);
+    background-color: #fff;
+    border: 1px solid var(--main-color); }
+  .page-edit .edit-category-body {
+    border-top: 1px solid black; }
+  .page-edit .form-edit {
+    margin-top: 30px;
+    padding-left: 50px;
+    padding-bottom: 50px; }
+  .page-edit .form-edit-group {
+    margin-top: 15px;
+    display: flex;
+    line-height: 30px; }
+  .page-edit .form-edit-name {
+    width: 180px;
+    font-weight: bold;
+    font-size: 1.6rem; }
+  .page-edit .form-edit-input {
+    line-height: 25px;
+    outline: none;
+    padding-left: 10px;
+    width: 400px; }
+  .page-edit .form-edit-select {
+    height: 30px; }
+  .page-edit .form-edit-checkbox {
+    margin: 0 10px -10px 0; }
+  .page-edit .choose-image-btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 0 15px;
+    right: 0;
+    height: 30px;
+    margin-left: 12px;
+    border-radius: 3px;
+    background-color: var(--main-color); }
+  .page-edit .form-edit-lable {
+    color: #fff;
+    padding: 0 10px;
+    font-size: 1.5rem;
+    margin-right: 40px;
+    border-radius: 5px; }
+  .page-edit .form-edit-error {
+    font-size: 1.3rem; }
+  .page-edit .form-edit-submit {
+    color: #fff;
+    height: 30px;
+    border: 0;
+    width: 100px;
+    cursor: pointer;
+    margin-top: 50px;
+    border-radius: 3px;
+    outline: none;
+    background-color: var(--main-color); }
+  .page-edit .form-edit-submit:hover {
+    color: var(--main-color);
+    background-color: #fff;
+    border: 1px solid var(--main-color); }
+  .page-edit .page-edit-body {
+    height: 93%;
+    overflow-y: scroll; }
+
+.page-control-features {
+  display: flex;
+  align-items: center; }
+  .page-control-features .check-all {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px; }
+    .page-control-features .check-all .check-all-item {
+      margin-right: 15px; }
+    .page-control-features .check-all .check-all-checkbox {
+      display: flex;
+      align-items: center; }
+    .page-control-features .check-all .check-all-input {
+      margin-right: 5px;
+      cursor: pointer; }
+    .page-control-features .check-all .check-all-lable {
+      font-size: 1.4rem;
+      cursor: pointer; }
+    .page-control-features .check-all .check-select-actions {
+      outline: none;
+      padding: 4px 10px; }
+    .page-control-features .check-all .check-all-btn {
+      color: #fff;
+      padding: 6px 6px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      border-radius: 3px;
+      background-color: #1c20f7; }
+    .page-control-features .check-all .check-all-btn.disabled {
+      opacity: 0.5; }
+  .page-control-features .page-control-search {
+    margin-left: 50px;
+    position: relative; }
+    .page-control-features .page-control-search input {
+      width: 250px;
+      height: 27px;
+      line-height: 27px;
+      outline: none;
+      padding: 5px 0 5px 25px;
+      border-radius: 3px;
+      border: 1px solid var(--main-color); }
+    .page-control-features .page-control-search i {
+      position: absolute;
+      left: 0;
+      color: var(--main-color);
+      font-size: 15px;
+      line-height: 27px;
+      padding: 0 5px; }
+  .page-control-features .page-control-select {
+    margin-left: 50px; }
+    .page-control-features .page-control-select select {
+      outline: none;
+      padding: 4px 10px; }
+
+/*ADMIN LOGIN*/
+.admin-login {
+  width: 100vw;
+  height: 100vh;
+  background-color: #dadada;
+  text-align: center; }
+  .admin-login .admin-login-icons {
+    padding-top: 100px; }
+  .admin-login .admin-login-icon {
+    font-size: 50px; }
+  .admin-login .admin-login-header {
+    color: #1b806f;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 20px; }
+  .admin-login .admin-login-body {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto; }
+  .admin-login .admin-login-form {
+    width: 350px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    background-color: #fff; }
+  .admin-login .admin-login-group {
+    position: relative; }
+  .admin-login .admin-login-input {
+    outline: none;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid #979797; }
+  .admin-login .admin-login-input.error-input {
+    border: 1px solid red; }
+  .admin-login .error-input::placeholder {
+    color: red !important; }
+  .admin-login .admin-input-icon {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+    cursor: pointer; }
+  .admin-login .admin-input-icon i {
+    position: absolute;
+    left: 10px;
+    line-height: 35px; }
+  .admin-login .admin-login-error {
+    display: block;
+    width: 100%;
+    color: red;
+    font-size: 1.3rem;
+    height: 30px;
+    text-align: center;
+    line-height: 30px; }
+  .admin-login .admin-login-btn {
+    width: 100%;
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    outline: none;
+    margin-top: 5px;
+    background-color: #1b806f; }
+
+/*ADMIN PAGE*/
+.admin-page {
+  display: flex; }
+  .admin-page .page-left {
+    width: 300px;
+    height: 100vh;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: var(--main-color);
+    box-shadow: 0 0 4px 0 #b1b1b1; }
+  .admin-page .page-left-header {
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    border-bottom: 1px solid #fff; }
+  .admin-page .page-left-name {
+    font-size: 3rem; }
+  .admin-page .control-list {
+    margin: 0;
+    padding: 0; }
+  .admin-page .control-item {
+    cursor: pointer;
+    list-style: none; }
+  .admin-page .control-item:hover {
+    background-color: #fff; }
+  .admin-page .control-item:hover .control-item-link {
+    color: black; }
+  .admin-page .control-item:hover .control-item-icon {
+    color: black; }
+  .admin-page .control-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .admin-page .control-item-link {
+    width: 100%;
+    display: block;
+    padding-left: 15px;
+    line-height: 45px;
+    font-size: 1.4rem;
+    color: #fff;
+    text-decoration: none; }
+  .admin-page .control-item-link.active {
+    color: black;
+    background-color: #fff; }
+    .admin-page .control-item-link.active .control-item-icon {
+      color: black; }
+  .admin-page .control-item-icon {
+    width: 20px;
+    height: 100%;
+    font-size: 15px;
+    color: #fff;
+    margin-right: 10px;
+    margin-bottom: 2px; }
+  .admin-page .page-right {
+    width: 100vw;
+    background-color: #fff;
+    border-left: 1px solid #fff; }
+  .admin-page .page-right-header {
+    height: 66px;
+    border: 1px solid #fff;
+    background-color: #fff; }
+
+.admin-store {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+  .admin-store .admin-store-overlay {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute; }
+  .admin-store .admin-store-content {
+    width: 70vw;
+    height: 80vh;
+    z-index: 2;
+    overflow: hidden;
+    margin: 60px auto 0;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #a5a5a5; }
+  .admin-store .admin-store-header {
+    display: flex;
+    padding: 5px 15px;
+    justify-content: space-between;
+    background-color: #cfcfcf; }
+  .admin-store .admin-store-name {
+    font-weight: bold;
+    font-size: 20px; }
+  .admin-store .admin-store-close {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 2rem; }
+  .admin-store .admin-store-close i {
+    margin-left: 6px; }
+  .admin-store .admin-store-body {
+    width: 100%;
+    height: 100%;
+    overflow: scroll; }
+
+/*END ADMIN PAGE*/
+/*ADMIN*/
+.admin-info {
+  display: flex;
+  margin-top: 10px;
+  height: 30px;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 5px;
+  position: relative;
+  background-color: #fff; }
+  .admin-info .admin-avatar {
+    color: black;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff; }
+  .admin-info .admin-avatar i {
+    color: #8b1919;
+    font-size: 18px;
+    margin-left: 4px; }
+  .admin-info .admin-detail {
+    display: flex;
+    flex: 1;
+    height: 30px;
+    align-items: center;
+    padding: 0 0 0 10px;
+    justify-content: space-between; }
+  .admin-info .admin-name {
+    font-size: 1.3rem;
+    align-items: center;
+    color: black;
+    margin: 0; }
+  .admin-info .admin-icon {
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    margin: 3px 0 0 10px; }
+  .admin-info .admin-actions {
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    display: none;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid var(--main-color); }
+  .admin-info .admin-action-item {
+    color: black;
+    display: block;
+    text-decoration: none; }
+  .admin-info .admin-action-item:hover {
+    background-color: #d4d4d4; }
+  .admin-info .admin-actions::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -5px; }
+  .admin-info .admin-logout {
+    height: 30px;
+    border-radius: 3px;
+    line-height: 30px; }
+
+/*END ADMIN*/
+.create-order .select-category {
+  outline: none; }
+
+.create-order .select-product {
+  outline: none; }
+
+.create-order .select-product option {
+  display: flex;
+  flex-direction: column; }
+
+.create-order .productprice {
+  color: red; }
+
+/*CATEGORIES AREA*/
+/*END CATEGORIES AREA*/
+/*CREATE CATEGORY*/
+/*END CREATE CATEGORY*/
+/*EDIT CATEGORY*/
+/*END EDIT CATEGORY*/
+/*TRASH*/
+.trash-control .trash-control-item {
+  margin-top: 15px;
+  margin-bottom: 50px;
+  border-left: 1px solid var(--main-color);
+  border-right: 1px solid var(--main-color); }
+
+.trash-control .trash-control-name {
+  padding: 3px 0 3px 15px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  font-size: 1.5rem; }
+
+.trash-control .trash-action-link {
+  padding: 3px 5px;
+  border-radius: 3px;
+  text-decoration: none; }
+
+/*END TRASH*/
+/*User Control*/
+.users-control {
+  padding: 15px;
+  height: 100vh;
+  overflow: scroll; }
+  .users-control .users-control-header {
+    display: flex;
+    padding: 0 0 10px 0;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #b3b3b3; }
+  .users-control .users-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .users-control .users-header-btn {
+    color: #fff;
+    display: block;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    background-color: var(--main-color); }
+  .users-control .users-header-btn:hover {
+    background-color: #218838; }
+  .users-control .check-all {
+    display: flex;
+    align-items: center;
+    padding: 15px 0; }
+    .users-control .check-all .check-all-item {
+      margin-right: 15px; }
+    .users-control .check-all .check-all-checkbox {
+      display: flex;
+      align-items: center; }
+    .users-control .check-all .check-all-input {
+      margin-right: 5px;
+      cursor: pointer; }
+    .users-control .check-all .check-all-lable {
+      font-size: 1.4rem;
+      cursor: pointer; }
+    .users-control .check-all .check-select-actions {
+      outline: none;
+      padding: 3px 0; }
+    .users-control .check-all .check-all-btn {
+      color: #fff;
+      padding: 6px 6px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      border-radius: 3px;
+      background-color: #1c20f7; }
+    .users-control .check-all .check-all-btn.disabled {
+      opacity: 0.5; }
+  .users-control .users-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse; }
+  .users-control .users-table thead {
+    color: #fff;
+    font-size: 1.4rem;
+    background-color: #28a745; }
+  .users-control .users-table thead tr {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black; }
+  .users-control .users-table thead tr th {
+    padding: 0;
+    border: none;
+    border-right: 1px solid black; }
+  .users-control .users-table tbody tr {
+    border-bottom: 1px solid black; }
+  .users-control .users-table tbody tr td {
+    border: none;
+    font-size: 1.3rem;
+    border-right: 1px solid black; }
+  .users-control .users-table tbody tr td:first-child {
+    border-left: 1px solid black; }
+  .users-control .users-action-link {
+    padding: 3px 5px;
+    border-radius: 3px;
+    text-decoration: none; }
+  .users-control .users-action-edit {
+    color: #056605; }
+  .users-control .users-action-edit:hover {
+    color: #fff;
+    background-color: #056605; }
+  .users-control .users-action-delete {
+    color: #970000; }
+  .users-control .users-action-delete:hover {
+    color: #fff;
+    background-color: #970000; }
+
+/*End User Control*/
+/*Create User*/
+.create-user {
+  padding: 15px;
+  height: 87vh; }
+  .create-user .create-user-header {
+    display: flex;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between; }
+  .create-user .user-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .create-user .user-header-back {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #28a745;
+    text-decoration: none; }
+  .create-user .user-header-back:hover {
+    background-color: #218838; }
+  .create-user .create-user-body {
+    border-top: 1px solid black; }
+  .create-user .create-user-form {
+    margin-top: 30px;
+    padding-left: 50px; }
+  .create-user .form-create-group {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    line-height: 30px; }
+  .create-user .form-create-name {
+    width: 150px;
+    font-weight: bold;
+    font-size: 1.6rem; }
+  .create-user .form-create-input {
+    line-height: 25px;
+    outline: none;
+    padding-left: 10px;
+    width: 300px; }
+  .create-user .form-create-checkbox {
+    margin: 0 10px -10px 0; }
+  .create-user .form-create-lable {
+    color: #fff;
+    padding: 0 10px;
+    font-size: 1.5rem;
+    margin-right: 40px;
+    border-radius: 5px; }
+  .create-user .form-create-error {
+    font-size: 1.3rem; }
+  .create-user .form-create-btn {
+    color: #fff;
+    height: 30px;
+    border: 0;
+    width: 100px;
+    cursor: pointer;
+    margin-top: 50px;
+    border-radius: 3px;
+    outline: none;
+    background-color: #1f38c7; }
+
+/*End Create User*/
+/*Edit User*/
+.edit-user {
+  padding: 15px;
+  height: 87vh; }
+  .edit-user .edit-user-header {
+    display: flex;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between; }
+  .edit-user .user-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .edit-user .user-header-back {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #28a745;
+    text-decoration: none; }
+  .edit-user .user-header-back:hover {
+    background-color: #218838; }
+  .edit-user .edit-user-body {
+    border-top: 1px solid black; }
+  .edit-user .edit-user-form {
+    margin-top: 30px;
+    padding-left: 50px; }
+  .edit-user .form-edit-group {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    line-height: 30px; }
+  .edit-user .form-edit-name {
+    width: 150px;
+    font-weight: bold;
+    font-size: 1.6rem; }
+  .edit-user .form-edit-input {
+    line-height: 25px;
+    outline: none;
+    padding-left: 10px;
+    width: 300px; }
+  .edit-user .form-edit-checkbox {
+    margin: 0 10px -10px 0; }
+  .edit-user .form-edit-lable {
+    color: #fff;
+    padding: 0 10px;
+    font-size: 1.5rem;
+    margin-right: 40px;
+    border-radius: 5px; }
+  .edit-user .form-edit-error {
+    font-size: 1.3rem; }
+  .edit-user .form-edit-btn {
+    color: #fff;
+    height: 30px;
+    border: 0;
+    width: 100px;
+    cursor: pointer;
+    margin-top: 50px;
+    border-radius: 3px;
+    outline: none;
+    background-color: #1f38c7; }
+
+/*End Edit User*/
+/*Dashboard Control*/
+.dashboard-control {
+  padding: 15px;
+  height: 100vh;
+  overflow: scroll; }
+  .dashboard-control .dashboard-control-header {
+    padding: 0 0 10px 0;
+    text-align: center;
+    border-bottom: 1px solid black; }
+  .dashboard-control .dashboard-control-body {
+    margin-top: 15px; }
+  .dashboard-control .dashboard-header-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px; }
+  .dashboard-control .dashboard-control-item {
+    display: block;
+    cursor: pointer;
+    border-radius: 3px;
+    height: 70px;
+    text-decoration: none;
+    text-align: center; }
+  .dashboard-control .control-item-name {
+    padding: 5px 0 0 0;
+    color: var(--white-color);
+    font-size: 1.4rem; }
+  .dashboard-control .control-item-count {
+    color: var(--white-color);
+    padding-top: 5px;
+    font-size: 20px; }
+  .dashboard-control .dashboard-control-categories {
+    background-color: #d30000; }
+  .dashboard-control .dashboard-control-products {
+    background-color: #e4bb06; }
+  .dashboard-control .dashboard-control-sitehtmls {
+    background-color: #df5050; }
+  .dashboard-control .dashboard-control-admins {
+    background-color: #218838; }
+  .dashboard-control .dashboard-control-order {
+    background-color: var(--main-color); }
+  .dashboard-control .dashboard-control-trash {
+    background-color: #a5a5a5; }
+
+/*Products Control*/
+/*Create Product*/
+.create-product .form-create-select {
+  height: 30px;
+  outline: none;
+  padding: 0 15px; }
+
+.create-product .form-create-select option {
+  padding: 3px 0; }
+
+.edit-product .form-edit-select {
+  height: 30px;
+  outline: none;
+  padding: 0 15px 0 8px; }
+
+.companyinfo-control .page-control-body {
+  margin-top: 15px; }
+
+.companyinfo-control table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid var(--main-color); }
+
+.companyinfo-control table th {
+  width: 15%;
+  padding: 3px 0;
+  border: none;
+  padding-left: 15px;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: var(--main-color);
+  border-bottom: 1px solid #fff; }
+
+.companyinfo-control table td {
+  width: 85%;
+  font-size: 1.4rem;
+  padding-left: 15px;
+  border-bottom: 1px solid var(--main-color); }
+
+.companyinfo-control table tr:last-child td, .companyinfo-control table tr:last-child th {
+  border-bottom: 0; }
+
+.edit-companyinfo .form-edit-input {
+  width: 500px; }
+
+/*Admins Control*/
+/*Create Admin*/

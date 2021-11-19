@@ -1,0 +1,46 @@
+<div class="edit-admin">
+    <div class="page-edit">
+        <div class="page-edit-header">
+            <div class="edit-header-name">Chỉnh sửa quản trị viên</div>
+            <a class="edit-header-back" href="/admin/admins">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-edit-body">
+            <form method="POST" action="" class="form-edit">
+                <div class="form-edit-group">
+                    <div class="form-edit-name">Tên truy cập:</div>
+                    <input class="form-edit-input" type="text" name="adminname" value="{{AdminItem.adminname}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name">Tên đầy đủ:</div>
+                    <input class="form-edit-input" type="text" name="fullname" value="{{AdminItem.fullname}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name">Mật khẩu:</div>
+                    <input class="form-edit-input" type="text" name="password" value="{{AdminItem.password}}">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="active">Trạng thái:</div>
+                    {{#if AdminItem.status}}
+                        <input class="form-edit-checkbox" checked="checked" type="radio" id="active" name="status" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);" for="active">Avtive</label>
+                        <input class="form-edit-checkbox" type="radio" name="status" id="unactive" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)" for="unactive">UnAvtive</label>
+                    {{else}}
+                        <input class="form-edit-checkbox" type="radio" name="status" id="active" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);" for="active">Avtive</label>
+                        <input class="form-edit-checkbox" checked="checked" type="radio" id="unactive" name="status" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)" for="unactive">UnAvtive</label>
+                    {{/if}}
+                    <span class="form-edit-error"></span>
+                </div>
+                <button class="form-edit-submit" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

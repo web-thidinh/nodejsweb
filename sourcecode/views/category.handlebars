@@ -1,0 +1,32 @@
+<div class="category-page">
+    <div class="grid">
+        <div class="category-page-header">
+            <div class="category-page-name">{{ThisCategory.name}}</div>
+        </div>
+        <div class="category-page-products">
+            <div class="row">
+                {{#each ThisProductItem}}
+                    <div class="col xl-2">
+                        <a href="/san-pham/{{this.slug}}" class="category-page-item">
+                            <div class="page-item-image">
+                                <img class="page-item-img"src="/uploads/{{this.image}}" alt="">
+                            </div>
+                            <div class="page-item-info">
+                                <div class="page-item-name">{{this.name}}</div>
+                                <div class="page-item-detail">
+                                    <div class="page-item-price">{{formatmoney this.productprice}}</div>
+                                    <div class="page-item-sold"></div>
+                                </div>
+                                {{!-- <div class="page-item-actions">
+                                    <div class="page-action-item product-action-save">Thêm vào giỏ hàng</div>
+                                    <div class="page-action-item product-action-buy">Đặt hàng</div>
+                                </div> --}}
+                            </div>                       
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+

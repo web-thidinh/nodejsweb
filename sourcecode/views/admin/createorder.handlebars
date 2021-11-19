@@ -1,0 +1,112 @@
+<div class="create-order">
+    <div class="page-create">
+        <div class="page-create-header">
+            <div class="create-header-name">Tạo mới đơn hàng</div>
+            <a class="create-header-back" href="/admin/order">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-create-body">
+            <div class="page-create-error">{{errCreate}}</div>
+            <form method="POST" action="" class="form-create">
+                <div class="form-create-group">
+                    <div class="form-create-name" for="productcateory">Chọn danh mục:</div>
+                    <div class="form-create-body">
+                        <select class="form-create-input form-create-select select-category" name="productcategory">
+                            <option value="None">-- Chọn danh mục --</option>
+                            {{#each CategoryItem}}
+                                <option value="{{this.name}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                        <div class="form-create-error"></div>
+                    </div>                    
+                </div> 
+                <div class="form-create-group">
+                    <div class="form-create-name" for="productname">Chọn sản phẩm:</div>
+                    <div class="form-create-body">
+                        <select class="form-create-input form-create-select select-product" name="productname">
+                            <option value="None">-- Chọn sản phẩm --</option>
+                            {{#each ProductItem}}
+                                <option value="{{sumArr this.name this.productprice}}">
+                                    <div class="name">{{this.name}}</div> |
+                                    <div class="productprice" style="color:red;">{{formatmoney this.productprice}}</div>
+                                </option>
+                            {{/each}}
+                        </select>
+                        <div class="form-create-error"></div>
+                    </div>                    
+                </div>   
+                <div class="form-create-group">
+                    <div class="form-create-name" for="customer">Tên khách hàng:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input" type="text" name="customer" required>
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="phonenumber">Số điện thoại:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input" type="text" name="phonenumber" required>
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="productnumber">Số lượng:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input product-number" type="number" name="productnumber" value="1" required>
+                        <div class="form-create-error"></div>
+                    </div>
+                </div> 
+                <div class="form-create-group" style="display:none;">
+                    <div class="form-create-name"  for="totalprice">Giá sản phẩm:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input totalprice" type="number" name="totalprice" required>
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name">Giá sản phẩm:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input textprice" type="text" required disabled>
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>
+                <button class="form-create-submit" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    function FormatMoney(value){
+        value = value.toString()
+        return(
+          value.split('').reverse().reduce(function(totalValue,nextValue,currentIndex){
+            if(currentIndex % 3){
+              return nextValue + totalValue
+            }
+            else{
+              return (nextValue + '.') + totalValue
+            }
+          })) + ' đ'
+    }
+    
+    var SelectCategory = document.querySelector('.select-category')
+    var SelectProduct = document.querySelector('.select-product')
+    var ProductNumber = document.querySelector('.product-number')
+    var ProductPrice = document.querySelector('.productprice')
+    var TotalPrice = document.querySelector('.totalprice')
+    var FormatTotalPrice = document.querySelector('.textprice')
+
+    ProductNumber.onchange = function(){
+        TotalPrice.value = SelectProduct.value.split(',').slice(1) * ProductNumber.value
+        FormatTotalPrice.value = FormatMoney(TotalPrice.value)
+        //FormatMoney(SelectProduct.value.split(',').slice(1) * ProductNumber.value)
+    }
+    SelectProduct.onchange = function(){
+        TotalPrice.value = SelectProduct.value.split(',').slice(1) * ProductNumber.value
+        FormatTotalPrice.value = FormatMoney(TotalPrice.value)
+    }
+    
+</script>

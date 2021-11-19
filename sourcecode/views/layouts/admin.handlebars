@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/AdminArea/base.css">
+    <link rel="stylesheet" href="/css/AdminArea/main.css">
+    <link rel="stylesheet" href="/fonts/fontawesome-free-5.15.4-web/css/all.css">
+    <script src="/library/ckeditor/ckeditor.js"></script>
+    <title>Quản trị Online Shop</title>
+</head>
+<body>
+    <div class="grid">
+        <div class="admin-page">
+            <div class="page-left">
+                <div class="page-left-header">
+                    <div class="page-left-name">
+                        Online Shop
+                    </div>
+                    <div class="admin-info">
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="admin-detail">                         
+                            <p class="admin-name">{{CurrentAdmin}}</p>
+                            <i class="admin-icon fas fa-chevron-down" onclick="ShowAdminAction()"></i>
+                            <div class="admin-actions">
+                                <div class="admin-action-item ">Đổi mật khẩu</div>
+                                <div class="admin-action-item ">|</div>
+                                <a href="/admin/adminlogout" class="admin-action-item admin-logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Đăng xuất
+                                </a>
+                            </div>
+                        </div>
+                    </div>             
+                </div>
+                <div class="page-left-body">
+                    <ul class="control-list">
+                        <li class="control-item">
+                            <a href="/admin/dashboard" class="control-item-link">
+                                <i class="control-item-icon fas fa-home"></i>
+                                Trang quản trị
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/orders" class="control-item-link">
+                                <i class="control-item-icon fas fa-file-invoice-dollar"></i>
+                                Đơn hàng
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/categories" class="control-item-link">
+                                <i class="control-item-icon fas fa-bars"></i>
+                                Danh mục sản phẩm
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/products" class="control-item-link">
+                                <i class="control-item-icon fas fa-box"></i>
+                                Sản phẩm
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/sitehtmls" class="control-item-link">
+                                <i class="control-item-icon fas fa-file"></i>
+                                Trang tĩnh
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/companyinfo" class="control-item-link">
+                                <i class="control-item-icon fas fa-info-circle"></i>
+                                Thông tin công ty
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/users" class="control-item-link">
+                                <i class="control-item-icon fas fa-users"></i>
+                                Người dùng
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/admins" class="control-item-link">
+                                <i class="control-item-icon fas fa-user-lock"></i>
+                                Quản trị viên
+                            </a>                                            
+                        </li>
+                        <li class="control-item">
+                            <a href="/admin/trash" class="control-item-link">
+                                <i class="control-item-icon fas fa-trash-restore"></i>
+                                Thùng rác
+                            </a>                                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-right">
+                <div class="page-right-body">
+                    {{{body}}}
+                </div>
+            </div>    
+        </div>
+        <div class="admin-store">
+            <div class="admin-store-overlay"></div>
+            <div class="admin-store-content">
+                <div class="admin-store-header">
+                    <div class="admin-store-name">Thư viện ảnh</div>
+                    <div class="admin-store-close"><i class="fas fa-times"></i></div>
+                </div>
+                <div class="admin-store-body">
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                    <div style="margin-top:50px">Nguyễn Đình Thi</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- OverLay Confirm Message --}}
+    <div class="confirm-layout">
+        <div class="confirm-overlay" onclick="HideOverlay('confirm-layout');"></div>
+        <div class="confirm-box">
+            <div class="confirm-box-header">Xóa danh mục</div>
+            <div class="confirm-box-body">Bạn có chắc chắn muốn xóa danh mục này?</div>
+            <div class="confirm-box-control">
+                <button class="confirm-box-btn confirm-box-sumbit">Xóa bỏ</button>
+                <button class="confirm-box-btn confirm-box-cancel" onclick="HideOverlay('confirm-layout');">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirm-layout confirm-layout-check">
+        <div class="confirm-overlay" onclick="HideOverlay('confirm-layout-check');"></div>
+        <div class="confirm-box">
+            <div class="confirm-box-header">Xóa danh mục</div>
+            <div class="confirm-box-body">Hành động không thể khôi phục. Bạn có chắc chắn muốn xóa các danh mục này?</div>
+            <div class="confirm-box-control">
+                <button class="confirm-box-btn confirm-box-sumbit confirm-sumbit-check">Xóa bỏ</button>
+                <button class="confirm-box-btn confirm-box-cancel" onclick="HideOverlay('confirm-layout-check');">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirm-layout confirm-layout-restore">
+        <div class="confirm-overlay" onclick="HideOverlay('confirm-layout-restore');"></div>
+        <div class="confirm-box">
+            <div class="confirm-box-header">Khôi phục danh mục</div>
+            <div class="confirm-box-body">Khôi phục các danh mục này?</div>
+            <div class="confirm-box-control">
+                <button class="confirm-box-btn confirm-box-sumbit confirm-sumbit-restore">Khôi phục</button>
+                <button class="confirm-box-btn confirm-box-cancel" onclick="HideOverlay('confirm-layout-restore');">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirm-layout confirm-password-layout">
+        <div class="confirm-overlay" onclick="HideOverlay('confirm-layout-check');"></div>
+        <div class="confirm-box">
+            <div class="confirm-box-header">Nhập mật khẩu để tiếp tục</div>
+            <div class="confirm-box-body">
+                <input type="text">
+            </div>
+            <div class="confirm-box-control">
+                <button class="confirm-box-btn confirm-box-sumbit">Xác nhận</button>
+                <button class="confirm-box-btn confirm-box-cancel" onclick="HideOverlay('confirm-password-layout');">Hủy</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay-admin" style="display:none;"></div>
+    <form method="POST" class="delete-form" action=""></form>
+</body>
+</html>
+<script>
+    //Add class 'active' into control item
+    var CurrentLocation = location.href
+    var ControlLink = document.querySelectorAll('.control-item-link')
+    for(i=0;i<ControlLink.length;i++){
+        if(ControlLink[i].href === CurrentLocation){
+            ControlLink[i].classList.add('active')
+        }
+    }
+
+    //Create slug from title
+    function CreateSlug(){
+        var CategoryName = document.querySelector('input[name="name"]')
+        var title = CategoryName.value
+        var slug = title.toLowerCase()
+        //Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+        //Xóa các ký tự đặt biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+        //Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+        //In slug ra input có id “slug”
+        document.querySelector('input[name="slug"]').value = slug
+    }
+
+    //Create parent slug from title
+    function CreateParentSlug(){
+        var CategoryName = document.querySelector('select[name="parent"]')
+        var title = CategoryName.value
+        var slug = title.toLowerCase()
+        //Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+        //Xóa các ký tự đặt biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+        //Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+        //In slug ra input có id “slug”
+        document.querySelector('input[name="parentslug"]').value = slug
+    }
+
+    //Search on page
+    function SearchOnPage(){
+        var inputValue = document.querySelector('input[name="searchonpage"]').value
+        var dataTable = document.querySelector('.data-table')
+        var dataRow = dataTable.querySelectorAll('tr')
+        for(i=0;i<dataRow.length;i++){
+            var dataColumn = dataRow[i].querySelectorAll('td')[2]
+            if(dataColumn){
+                var textValue = dataColumn.innerHTML
+                if(textValue.toLocaleLowerCase().indexOf(inputValue.toLocaleLowerCase()) > -1){
+                    dataRow[i].style.display = ""
+                }
+                else{   
+                    dataRow[i].style.display = "none"
+                }
+            }
+        }
+    }
+    
+    //Filter by product category
+    function FilterByCategory(){
+        var select= document.querySelector('select[name="selectparent"]')
+        var dataTable = document.querySelector('.data-table')
+        var dataRow = dataTable.querySelectorAll('tr')
+        
+        for(i=0;i<dataRow.length;i++){
+            var CategoryValue = dataRow[i].querySelectorAll('td')[3]
+            if(CategoryValue){
+                textValue = CategoryValue.innerHTML
+                if(textValue == select.value){
+                    dataRow[i].style.display = ""
+                }
+                else if(select.value == "None"){
+                    dataRow[i].style.display = ""
+                }
+                else{
+                    dataRow[i].style.display = "none"
+                }
+            }
+            
+        }
+    }
+
+    //Display file image
+    function DisplayImageFile(inputFile){
+        if(inputFile.files && inputFile.files[0]){
+            var Read = new FileReader()
+            Read.onload = function(event){
+                document.querySelector('.form-upload-thumnail .form-upload-img').src = event.target.result
+                var closeBtn = '<i class="form-upload-close far fa-times-circle onclick="CloseImageUpload(this);"></i>'
+                document.querySelector('.form-upload-thumnail .form-upload-item').insertAdjacentHTML('beforeend',closeBtn)
+            }
+            Read.readAsDataURL(inputFile.files[0])
+        }
+    }
+    //Display multi file image
+    //function DisplayMultiImageFile(inputFile){
+    //    for(i=0;i<inputFile.files.length;i++){
+    //       if(inputFile.files && inputFile.files[i]){
+    //            var Read = new FileReader()
+    //            Read.onload = function(event){
+    //                var divImages = 
+    //                   '<div class="form-upload-item">'+
+    //                        '<img class="form-upload-img" src=\"'+ event.target.result +'\">'+
+    //                        '<i class="form-upload-close far fa-times-circle  onclick="CloseImageUpload(this);""></i>'+
+    //                    '</div>'
+    //                document.querySelector('.form-upload-library').insertAdjacentHTML('beforeend',divImages)
+    //            }
+    //            Read.readAsDataURL(inputFile.files[i])
+    //        }
+    //    }
+    //}
+    //Close
+    function closeimageupload(CloseBtn){
+        CloseBtn.onclick = function(){
+            console.log(CloseBtn)
+        }
+    }
+   
+    //Delete data item
+    function DeleteDataItem(DeleteItem,PageDelete){
+        event.preventDefault();
+        var overlay = document.querySelector('.confirm-layout')
+        overlay.style.display = "block" 
+        //submit delete form
+        var IdItem = DeleteItem.getAttribute('idItem')
+        var DeleteForm = document.querySelector('.delete-form')
+        var DeleteBtn = document.querySelector('.confirm-box-sumbit')
+        DeleteBtn.onclick = function(){
+            DeleteForm.action = '/admin/' + PageDelete +  '/delete/' + IdItem
+            DeleteForm.submit()
+        }
+    }
+    //Hide overlay confirm delete
+    function HideOverlay(ConfirmBox){
+        var overlay = document.querySelector('.' + ConfirmBox + '')
+        overlay.style.display = "none"
+    }    
+    
+    //Check all data item
+    function CheckAll(CheckAllBtn,CheckItem,SelectAction,SubmitAction){
+        var isChecked = CheckAllBtn.checked
+        var SubmitBtn = document.querySelector('.'+ SubmitAction +'')
+        var CheckSelectValue = document.querySelector('.'+ SelectAction +'')
+        var CheckedCount = document.querySelectorAll('input[class=\"'+ CheckItem +'\"]:checked')
+        var CheckItemCount = document.querySelectorAll('.' + CheckItem + '')
+        for(i=0;i<CheckItemCount.length;i++){
+            CheckItemCount[i].checked = isChecked
+            if(isChecked && CheckSelectValue.value != ''){
+                SubmitBtn.removeAttribute("disabled")
+                SubmitBtn.classList.remove('disabled')
+            }
+            else{
+                SubmitBtn.setAttribute("disabled","")
+                SubmitBtn.classList.add('disabled')
+            }
+        }
+    }
+    //Compare checked item and check all button
+    function CompareToCheck(CheckAllBtn,CheckItem,SelectAction,SubmitAction){
+        var SubmitBtn = document.querySelector('.'+ SubmitAction +'')
+        var CheckAll = document.querySelector('.'+ CheckAllBtn +'')
+        var CheckItemCount = document.querySelectorAll('\.' + CheckItem + '')
+        var CheckSelectValue = document.querySelector('.'+ SelectAction +'')
+        var CheckedCount = document.querySelectorAll('input[class=\"' + CheckItem + '\"]:checked')
+        for(i=0;i<CheckItemCount.length;i++){
+            var isChekedAll = CheckedCount.length === CheckItemCount.length
+            CheckAll.checked = isChekedAll
+        }
+        if(CheckedCount.length > 0 && CheckSelectValue.value != ''){
+            SubmitBtn.removeAttribute("disabled")
+            SubmitBtn.classList.remove('disabled')
+        }
+        else{
+            SubmitBtn.setAttribute("disabled","")
+            SubmitBtn.classList.add('disabled')
+        }
+    }
+    //Check value seclect
+    function CheckSelectAction(CheckItem,SelectAction,SubmitAction){
+        var SubmitBtn = document.querySelector('.'+ SubmitAction +'')
+        var CheckSelectValue = document.querySelector('.'+ SelectAction +'')
+        var CheckedCount = document.querySelectorAll('input[class=\"'+ CheckItem +'\"]:checked')
+        if(CheckSelectValue.value != '' && CheckedCount.length > 0 ){
+            SubmitBtn.removeAttribute("disabled")
+            SubmitBtn.classList.remove('disabled')
+        }
+        else{
+            SubmitBtn.setAttribute("disabled","")
+            SubmitBtn.classList.add('disabled')
+        }
+    }
+
+    //Delete data item by check all
+    function DeleteByCheck(FormSubmit,SelectAction,CheckItem){
+        event.preventDefault()
+        var FormSubmitCheck = document.querySelector('.'+ FormSubmit +'')
+        var ConfirmSubmitPassword = document.querySelector('.confirm-password-layout')
+        var CheckItemCount = document.querySelectorAll('.'+ CheckItem +'').length
+        var CheckedItem = document.querySelectorAll('.'+ CheckItem +':checked').length
+        var SelectValue = document.querySelector('.'+ SelectAction +'').value
+        if(SelectValue == 'delete'){
+            var ConfirmSubmit = document.querySelector('.confirm-layout-check')
+            ConfirmSubmit.style.display = "block"
+            var ButtonSubmitCheck = document.querySelector('.confirm-sumbit-check')
+            ButtonSubmitCheck.onclick = function(){
+                FormSubmitCheck.submit()
+            }
+        }
+        if(SelectValue == 'restore'){
+            var ConfirmSubmit = document.querySelector('.confirm-layout-restore')
+            ConfirmSubmit.style.display = "block" 
+            var ButtonSubmitCheck = document.querySelector('.confirm-sumbit-restore')
+            ButtonSubmitCheck.onclick = function(){
+                FormSubmitCheck.submit()
+            }
+        }
+    }
+    
+    //Show admin action
+    function ShowAdminAction(){
+        var AdminAction = document.querySelector('.admin-actions')
+        var AdminOverlay = document.querySelector('.overlay-admin')
+        AdminAction.style.display =  'block'
+        AdminOverlay.style.display = 'block'
+        AdminOverlay.onclick = function(){
+            this.style.display = 'none'
+            AdminAction.style.display = 'none'
+        }
+    }
+
+    //Sumit form create
+    function SubmitFormCreate(){
+        event.preventDefault()
+        var TextInput = document.querySelectorAll('.form-create-input')
+        var FormSubmit = document.querySelector('.form-create')
+        var Sumbit = document.querySelector('.form-create-submit')
+        for(i=0;i<TextInput.length;i++){
+            if(TextInput[i].value == ''){
+                TextInput[i].classList.add('error')
+                TextInput[i].nextElementSibling.innerHTML = "Không được để trống phần này !"
+                TextInput[i].onfocus = function(){
+                    this.classList.remove('error')
+                    this.nextElementSibling.innerHTML = ""
+                }
+            }
+            else{
+                FormSubmit.submit()
+            }
+        }
+    }
+
+
+</script>

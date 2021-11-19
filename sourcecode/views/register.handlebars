@@ -1,0 +1,125 @@
+<div class="main-regist">
+        <div class="regist-header">
+            <i class="regist-header-icon fas fa-shopping-bag"></i>
+            Đăng Ký <span style="color:rgb(255, 34, 34);">Online Shop</span>
+            </div>
+        <div class="grid">
+            <div class="regist-body">
+                <div class="regist-item">
+                    <form method="POST" action="/user/registed" class="regist-form">
+                        <div class="form-regist-header">ĐĂNG KÝ</div>
+                        <div class="form-regist-group">
+                            <input class="form-regist-input" onkeyup="CreateUsername('username');" name="username" type="text" placeholder="Tên đăng nhập (Viết liền không dấu, không ký tự đặc biệt !)">
+                            <div class="form-regist-error"></div>
+                        </div>
+                        <div class="form-regist-group">
+                            <input class="form-regist-input" name="phonenumber" type="text" placeholder="Số điện thoại">
+                            <div class="form-regist-error"></div>
+                        </div>
+                        <div class="form-regist-group">
+                            <input class="form-regist-input" name="password" type="password" placeholder="Mật khẩu">
+                            <div class="form-regist-error"></div>
+                            <div class="form-regist-icons">
+                                <i class="form-regist-icon-item hide-icon fas fa-eye-slash" onclick="ShowPass()"></i>
+                                <i class="form-regist-icon-item show-icon fas fa-eye" style="display:none;" onclick="ShowPass()"></i>
+                            </div>
+                        </div>
+                        <button type="submit" class="form-regist-btn" onclick="CheckSubmitForm('regist-form','form-regist-input','form-regist-btn')">ĐĂNG KÝ</button>
+                        <div class="form-regist-message">{{message}}</div>
+                        <div class="login-registed">
+                            <div class="registed-header">Bạn đã có tài khoản Online Shop?</div>
+                            <a class="registed-link" href="/user/login" >Đăng nhập</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>  
+</div>
+
+<script>
+
+    //Create username without space
+    function CreateUsername(InputName){
+        var InputElement = document.querySelector('input[name=\"'+ InputName +'\"]')
+        var UserName = InputElement.value
+
+        //Đổi ký tự có dấu thành không dấu
+        UserName = UserName.replace(/Á|À|Ả|Ạ|Ã|Ă|Ắ|Ằ|Ẳ|Ẵ|Ặ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ/g, 'A');
+        UserName = UserName.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/g, 'a');
+
+        UserName = UserName.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/g, 'e');
+        UserName = UserName.replace(/É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ/g, 'E');
+
+        UserName = UserName.replace(/i|í|ì|ỉ|ĩ|ị/g, 'i');
+        UserName = UserName.replace(/I|Í|Ì|Ỉ|Ĩ|Ị/g, 'I');
+
+        UserName = UserName.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/g, 'o');
+        UserName = UserName.replace(/Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ/g, 'O');
+
+        UserName = UserName.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/g, 'u');
+        UserName = UserName.replace(/Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự/g, 'U');
+
+        UserName = UserName.replace(/ý|ỳ|ỷ|ỹ|ỵ/g, 'y');
+        UserName = UserName.replace(/Ý|Ỳ|Ỷ|Ỹ|Ỵ/g, 'Y');
+
+        UserName = UserName.replace(/đ/g, 'd');
+        UserName = UserName.replace(/Đ/g, 'D');
+
+        //Xóa các ký tự đặt biệt
+        UserName = UserName.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|\-|_/gi, '');
+        //Bỏ khoảng trắng
+        UserName = UserName.replace(/ /gi, '');
+        //Bỏ khoảng trắng đầu và cuối
+        UserName = UserName.trim()
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        //UserName = UserName.replace(/\-\-\-\-\-/gi, '-');
+        //UserName = UserName.replace(/\-\-\-\-/gi, '-');
+        //UserName = UserName.replace(/\-\-\-/gi, '-');
+        //UserName = UserName.replace(/\-\-/gi, '-');
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        //UserName = '@' + UserName + '@';
+        //UserName = UserName.replace(/\@\-|\-\@|\@/gi, '');
+        //In slug ra input có id “slug”
+        InputElement.value = UserName
+    }
+    
+    //Hide and show password
+    function ShowPass(){
+        var HidePass = document.querySelector('.hide-icon')
+        var Input = document.querySelector('input[name="password"]')
+        var ShowPass = document.querySelector('.show-icon')
+        if(Input.type == 'password'){
+            Input.type = "text"
+            HidePass.style.display = "none"
+            ShowPass.style.display = "block"
+        }
+        else{
+            Input.type = "password"
+            ShowPass.style.display = "none"
+            HidePass.style.display = "block"
+        }
+    }
+
+    //Check empty field form regist
+    function CheckSubmitForm(Form,Input,Submit){
+        event.preventDefault()
+        var InputElement = document.querySelectorAll('.'+ Input +'')
+        var FormSubmit = document.querySelector('.'+ Form +'')
+        for(i=0;i<InputElement.length;i++){
+            if(InputElement[i].value == ''){
+                InputElement[i].classList.add('error')
+                InputElement[i].nextElementSibling.innerHTML = "Không được để trống !"
+                InputElement[i].onfocus = function(){
+                    this.classList.remove('error')
+                    this.nextElementSibling.innerHTML = ""
+                }
+            }
+            else{
+                FormSubmit.submit()
+            }
+        }
+
+    }
+
+</script>

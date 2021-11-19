@@ -1,0 +1,38 @@
+<div class="create-admin">
+    <div class="page-create">
+        <div class="page-create-header">
+            <div class="create-header-name">Tạo mới người dùng</div>
+            <a class="create-header-back" href="/admin/users">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-create-body">
+            <div class="page-create-error">{{errCreate}}</div>
+            <form method="POST" action="" class="form-create" style="padding-left: 15px;">
+                <div class="form-create-group">
+                    <div class="form-create-name">Tên truy cập:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input" type="text" name="username">
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name">Tên đầy đủ:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input" type="text" name="fullname">
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name">Mật khẩu:</div>
+                    <div class="form-create-body">
+                        <input class="form-create-input" type="password" name="password">
+                        <div class="form-create-error"></div>
+                    </div>
+                </div>     
+                <button class="form-create-submit" type="submit" onclick="SubmitFormCreate();">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

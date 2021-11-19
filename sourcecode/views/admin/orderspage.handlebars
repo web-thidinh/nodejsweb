@@ -1,0 +1,91 @@
+<div class="products-control">
+    <div class="page-control">
+        <div class="page-control-header">
+            <div class="control-header-name">Quản lý đơn hàng</div>
+            <a class="control-header-create" href="/admin/orders/create">
+                <i class="fas fa-plus-circle"></i>
+                Tạo mới đơn hàng
+                </a>
+        </div>
+        <div class="page-control-body">
+            <form class="form-submit-order" method="POST" action="/admin/orders/form-submit-action">     
+                <div class="page-control-features">
+                    <div class="check-all">
+                        <div class="check-all-item check-all-checkbox">
+                            <input class="check-all-input check-all-orders" type="checkbox" onchange="CheckAll(this,'order-check-item','check-select-actions','submit-action-order');">
+                            <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                        </div>
+                        <select class="check-all-item check-select-actions" name="action" required onchange="CheckSelectAction('order-check-item','check-select-actions','submit-action-order')">
+                            <option value="">-- Hành động --</option>
+                            <option value="delete">Xóa</option>
+                            <option value="restore">Sửa</option>
+                        </select>
+                        <button class="check-all-item check-all-btn submit-action-order disabled" type="submit" disabled onclick="DeleteByCheck('form-submit-order','check-select-actions','order-check-item')" >Thực hiện</button>
+                    </div>
+                    <div class="page-control-search">
+                        <input type="text" name="searchonpage" placeholder="Tìm đơn hàng" onkeyup="SearchOnPage();">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="page-control-select">
+                        <select name="selectparent" id="" onchange="FilterByCategory();">
+                            <option value="None">-- Tất đơn hàng --</option>
+                            {{#each CategoryItem}}
+                                <option class="select-option" value="{{this.name}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead >
+                        <tr>
+                            <th>Chọn</th>
+                            <th>STT</th>
+                            <th style="width:25%;">TÊN SẢN PHẨM</th>
+                            <th>DANH MỤC</th>
+                            <th>TÊN KHÁCH HÀNG</th>
+                            <th>SỐ ĐIỆN THOẠI</th>
+                            <th>SỐ LƯỢNG</th>
+                            <th>TỔNG TIỀN</th>
+                            <th>NGÀY TẠO</th>
+                            <th>HÀNH ĐỘNG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each OrderItem}}
+                        <tr>    
+                            <td>
+                                <input class="order-check-item" name="checkItem" value ="{{this._id}}" type="checkbox" onclick="CompareToCheck('check-all-orders','order-check-item','check-select-actions','submit-action-order');">
+                            </td>
+                            <td>{{sum @index 1}}</td>
+                            <td style="text-align:left;padding-left:15px;overflow:hidden;-webkit-line-clamp:1;display: -webkit-box;line-height:30px;height:30px;text-overflow: ellipsis;-webkit-box-orient: vertical;">{{this.productname}}</td>
+                            <td>{{this.productcategory}}</td>
+                            <td>{{this.customer}}</td>
+                            <td>{{this.phonenumber}}</td>
+                            <td>{{this.productnumber}}</td>
+                            <td>{{formatmoney this.totalprice}}</td>
+                            <td>{{formatDate this.createdAt}}</td>
+                            <td>
+                                <a href="/admin/orders/edit/{{this._id}}" class="page-action-link page-action-edit" alt="Chỉnh sửa danh mục">
+                                    <i class="fas fa-pen"></i>
+                                    Sửa
+                                </a>
+                                <a href="/admin/orders/delete/{{this._id}}" class="page-action-link page-action-delete" onclick="DeleteDataItem(this,'orders')" idItem="{{this._id}}" alt="Xóa danh mục">
+                                    <i class="fas fa-trash-alt"></i>
+                                    Xóa
+                                </a>                      
+                            </td>
+                        </tr>
+                        {{else}}
+                        <tr style="border-bottom:0;">
+                            <td colspan="9" style="padding-top:20px;border:0;">
+                                Đơn hàng trống.
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<form method="POST" class="delete-form" action=""></form>

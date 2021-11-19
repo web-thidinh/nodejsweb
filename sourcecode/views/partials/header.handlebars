@@ -1,0 +1,147 @@
+<header class="header">
+    <div class="header-top">
+        <div class="grid">
+            <nav class="header-navbar">
+                <ul class="header-navbar-list">
+                    <li class="header-navbar-item">
+                        <a href="/" class="header-navbar-link">
+                            <i class="header-icon fas fa-home"></i>     
+                            Trang chủ
+                        </a>
+                    </li>
+                    <li class="header-navbar-item line-column">
+                        <a href="/san-pham" class="header-navbar-link">Sản phẩm</a>
+                    </li>
+                    {{!-- <li class="header-navbar-item line-column">
+                        <a href="" class="header-navbar-link">Tin tức khuyến mại</a>
+                    </li> --}}
+                    <li class="header-navbar-item line-column">
+                        <a href="/gioi-thieu" class="header-navbar-link">Giới thiệu</a>
+                    </li>
+                    {{!-- <li class="header-navbar-item line-column">
+                        <a href="" class="header-navbar-link">Liên hệ</a>
+                    </li> --}}
+                    {{!-- <li class="header-navbar-item line-column">
+                        <a href="" class="header-navbar-link has-qrcode">
+                            Tải ứng dụng
+                            <div class="header-qrcode">
+                                <img class="qrcode-img "src="/images/qrcode.png" alt="">
+                                <div class="qrcode-apps">
+                                    <img class="qrcode-dowload" src="/images/appstore.png" alt="">
+                                    <img class="qrcode-dowload" src="/images/ggplay.png" alt="">
+                                    <img class="qrcode-dowload" src="/images/appgallery.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </li> --}}
+                    {{!-- <li class="header-navbar-item line-column ">
+                        Kết nối
+                        <a href="" class="header-navbar-link header-link-fb">
+                            <i class="header-icon fab fa-facebook"></i>
+                        </a>
+                        <a href="" class="header-navbar-link header-link-insta">                            
+                            <i class="header-icon fab fa-instagram"></i>
+                        </a>
+                    </li> --}}
+                </ul>
+                <ul class="header-navbar-list">
+                    {{!-- <li class="header-navbar-item">
+                        <a class="header-navbar-link has-notify">
+                            <i class="header-icon fas fa-bell"></i>
+                            Thông báo   
+                            <div class="notify-box">
+                                <div class="notify-body">
+                                    <img src="/images/99e561e3944805a023e87a81d4869600.png" alt="">
+                                    <p>Đăng nhập để xem thông báo</p>
+                                </div>
+                                <div class="notify-button">
+                                    <button class= "notify-button-reg">Đăng ký</button>
+                                    <button class= "notify-button-log">Đăng nhập</button>
+                                </div>
+                            </div>
+                        </a>
+                    </li> --}}
+                    <li class="header-navbar-item">
+                        <a href="#" class="header-navbar-link">
+                            <i class="header-icon far fa-question-circle"></i>
+                            Hỗ trợ
+                        </a>
+                    </li>
+                    <li class="header-navbar-item line-column">
+                        <a href="#" class="header-navbar-link ">
+                            Hướng dẫn
+                        </a>
+                    </li>
+                    {{#if CurrentUser}}
+                        <li class="header-navbar-item">
+                            <div class="header-navbar-user" onclick="ShowUserAction();">
+                                <div class="header-navbar-avatar">
+                                    <img src="/images/admin.jpg" alt="">
+                                </div>
+                                <div class="navbar-user-name">
+                                    {{CurrentUser}}
+                                    <i class="fas fa-caret-down"></i>
+                                </div>
+                            </div>
+                            <div class="overscreen"></div>
+                            <div class="header-user-actions">
+                                <div class="header-action-item">
+                                    <a class="header-action-link" href="">Tài khoản của tôi</a>
+                                </div>
+                                <div class="header-action-item">
+                                    <a href="/user/logout" class="header-action-link" href="">Đăng xuất</a>
+                                </div>
+                            </div>
+                        </li>
+                    {{else}}
+                        <li class="header-navbar-item line-column">
+                            <a href="/user/login" class="header-navbar-link header-login">Đăng nhập</a>
+                        </li>
+                    {{/if}}
+                </ul>
+            </nav>
+            <div class="header-body">
+                <div class="header-logo">
+                    <a href="/" class="header-logo-link">
+                        Online Shop
+                    </a>
+                </div>
+                <div class="header-body-center">
+                    <form class="header-search" method="GET" action="/tim-kiem">
+                        <div class="header-search-box">
+                            <input type="text" name="search" class="header-search-input" value="{{value}}" placeholder="Tìm sản phẩm" autocomplete="">
+                            {{!-- <div class="header-search-history">
+                                <a class="header-history-link" href="google.com">Ba lô</a>
+                            </div> --}}
+                            <button type="submit" class="header-search-btn">
+                                <i class=" header-search-icon fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    {{!-- <ul class="header-option-list">
+                        {{#each HeadCategories}}
+                            <li class="header-option-item">                                   
+                                <a href="" class="header-option-link">{{this.name}}</a>                                   
+                            </li>   
+                        {{/each}}
+                    </ul> --}}
+                </div>
+                <div class="header-body-right">
+                    <a href="/gio-hang" class="header-cart">     
+                        <i class="header-cart-img fas fa-cart-plus"></i>
+                        {{#if CartNumber}}
+                        Giỏ hàng ({{ CartNumber }})
+                        {{else}}
+                        Giỏ hàng
+                        {{/if}}
+                        {{!-- <div class="header-cart-box">
+                            <div class="header-cart-connect"></div>
+                            <img src="/images/empty-product.png" alt="">
+                            <p>Chưa có sản phẩm</p>
+                        </div> --}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

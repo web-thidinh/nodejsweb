@@ -1,0 +1,48 @@
+<div class="main-login">
+        <div class="login-header">
+            <i class="login-headder-icon fas fa-shopping-bag"></i>
+            Đăng Nhập <span style="color:rgb(255, 34, 34);">Online Shop</span>
+            </div>
+        <div class="grid">
+            <div class="login-body">
+                <div class="login-item">
+                    <img src="/images/loginimg.png" alt="">
+                </div>
+                <div class="login-item">
+                    <form method="POST" action="" class="login-form">
+                        <div class="form-header">ĐĂNG NHẬP</div>
+                        <div class="form-group">
+                            <input class="form-input" name="username" type="text" value="{{username}}" placeholder="Tên đăng nhập">
+                            <div class="form-error">{{errUser}}</div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-input" name="password" type="text" value="{{password}}" placeholder="Mật khẩu">
+                            <div class="form-error">{{errPass}}</div>
+                            <div class="form-icons">
+                                <i class="form-icon-item hide-pass fas fa-eye-slash"></i>
+                                <i class="form-icon-item show-pass fas fa-eye" style="display:none;"></i>
+                            </div>
+                        </div>
+                        <button type="submit" class="form-btn">ĐĂNG NHẬP</button>
+                        <div class="login-social">
+                            <div class="social-header">Đăng nhập với</div>
+                            <div class="social-body">
+                                <button class="social-body-btn">
+                                    <i class="social-body-icon fab fa-facebook"></i>
+                                    <span>Facebook</span>   
+                                </button>
+                                <button class="social-body-btn">
+                                    <i class="social-body-icon fab fa-google-plus"></i>
+                                    <span>Google</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="login-regis">
+                            <div class="regis-header">Bạn chưa có tài khoản Online Shop?</div>
+                            <a class="regis-link" href="/user/register">Đăng ký</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>  
+</div>

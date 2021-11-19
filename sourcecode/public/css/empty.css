@@ -1,0 +1,248 @@
+html {
+  height: 100%; }
+
+* {
+  box-sizing: inherit; }
+
+body {
+  margin: 0;
+  height: 100%; }
+
+.main-login {
+  height: 100%;
+  text-align: center;
+  background-color: #F6412D; }
+
+.login-header {
+  font-size: 30px;
+  padding: 30px 0;
+  background-color: #fff; }
+
+.login-headder-icon {
+  font-size: 38px;
+  color: #F6412D; }
+
+.login-body {
+  display: inline-flex; }
+
+.login-item {
+  flex: 1;
+  margin-top: 30px; }
+
+.login-item img {
+  width: 100%; }
+
+.login-form {
+  flex: 1;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  width: 400px;
+  height: 470px;
+  border-radius: 5px;
+  padding: 0 30px; }
+
+.form-header {
+  font-size: 20px;
+  padding: 30px 0; }
+
+.form-error {
+  height: 30px;
+  line-height: 30px;
+  color: red;
+  font-size: 1.3rem;
+  border-radius: 3px;
+  text-align: left;
+  margin-bottom: 5px;
+  padding-left: 15px; }
+
+.form-group {
+  position: relative; }
+
+.form-input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  padding-left: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px; }
+
+.form-icons {
+  top: 12%;
+  right: 10px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 15px;
+  position: absolute; }
+
+.form-btn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  line-height: 40px;
+  border-radius: 3px;
+  background-color: #ff2222; }
+
+.login-social {
+  margin-top: 30px; }
+
+.social-header {
+  font-size: 1.6rem; }
+
+.social-body {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; }
+
+.social-body-btn {
+  width: 160px;
+  height: 40px;
+  border: 0;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0 0 24px;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  background-color: #105bbd; }
+
+.social-body-btn:last-child {
+  background-color: #F6412D; }
+
+.social-body-icon {
+  font-size: 27px;
+  margin-right: 10px;
+  padding-bottom: 2px; }
+
+.login-regis {
+  margin-top: 40px;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  display: inline-flex;
+  text-align: center; }
+
+.regis-header {
+  color: var(--text-color); }
+
+.regis-link {
+  font-size: 1.8rem;
+  display: block;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #f32610; }
+
+/*USER REGISTER */
+.main-regist {
+  height: 100%;
+  text-align: center;
+  background-color: #F6412D; }
+
+.regist-header {
+  font-size: 30px;
+  padding: 30px 0;
+  background-color: #fff; }
+
+.regist-header-icon {
+  font-size: 38px;
+  color: #F6412D; }
+
+.regist-body {
+  display: inline-flex; }
+
+.regist-item {
+  flex: 1;
+  margin-top: 30px; }
+
+.regist-item img {
+  width: 100%; }
+
+.regist-form {
+  flex: 1;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  width: 430px;
+  border-radius: 5px;
+  padding: 30px; }
+
+.form-regist-header {
+  font-size: 20px;
+  padding: 0 0 15px 0; }
+
+.form-regist-group {
+  position: relative; }
+
+.form-regist-input {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color); }
+
+.form-regist-input.error {
+  border: 1px solid red; }
+
+.form-regist-error {
+  color: red;
+  height: 30px;
+  font-size: 1.3rem;
+  text-align: left;
+  padding-left: 15px; }
+
+.form-regist-icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  padding: 0 10px;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 15px;
+  line-height: 40px; }
+
+.form-regist-icon-item {
+  line-height: 40px !important; }
+
+.form-regist-btn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  line-height: 40px;
+  border-radius: 5px;
+  background-color: #ff2222; }
+
+.login-registed {
+  margin-top: 40px;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  display: inline-flex;
+  text-align: center; }
+
+.registed-header {
+  color: var(--text-color); }
+
+.registed-link {
+  font-size: 1.8rem;
+  display: block;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #f32610; }
+
+/*END USER REGISTER*/

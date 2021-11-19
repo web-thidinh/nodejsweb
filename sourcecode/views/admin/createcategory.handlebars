@@ -1,0 +1,46 @@
+<div class="create-category">
+    <div class="page-create">
+        <div class="page-create-header">
+            <div class="create-header-name">Tạo mới danh mục sản phẩm</div>
+            <a class="create-header-back" href="/admin/categories">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-create-body">
+            <form method="POST" action="" class="form-create" enctype='multipart/form-data'>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="name">Tên danh mục:</div>
+                    <input class="form-create-input" type="text" name="name" onkeyup="CreateSlug()" required>
+                    <div class="form-create-error"></div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="name">Ảnh thumnail:</div>
+                    <div class="form-upload-images form-upload-thumnail">
+                        <div class="form-upload-item">
+                            <img class="form-upload-img" src="" alt="">
+                        </div>
+                    </div>
+                    <label class = "choose-image-btn" for="file">Chọn ảnh</label>
+                    <input class="form-create-input" style="display:none" id="file" type="file" name="image"  onchange="DisplayImageFile(this);">
+                    <div class="form-create-error"></div>
+                </div> 
+                <div class="form-create-group" style="display:none">
+                    <div class="form-create-name" for="image">Slug:</div>
+                    <input class="form-create-input" type="text" name="slug" required>
+                    <div class="form-create-error"></div>
+                </div>
+                <div class="form-create-group">
+                    <div class="form-create-name" for="active">Trạng thái:</div>
+                    <input class="form-create-checkbox" checked="checked" type="radio" name="status" value="1">
+                    <label class="form-create-lable" style="background-color: rgb(16, 161, 65);" for="vehicle1">Avtive</label>
+                    <input class="form-create-checkbox" type="radio" name="status" value="0">
+                    <label class="form-create-lable" style="background-color: rgb(212, 40, 40)" for="vehicle1">UnAvtive</label>
+                    <div class="form-create-error"></div>
+                </div>
+                <button class="form-create-submit" type="submit">Lưu</button>
+                <div class="page-create-error">{{errCreate}}</div>
+            </form>            
+        </div>
+    </div>
+</div>

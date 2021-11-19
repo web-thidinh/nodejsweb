@@ -1,0 +1,73 @@
+<div class="sitehtml-control">
+    <div class="page-control">
+        <div class="page-control-header">
+            <div class="control-header-name">Quản lý trang tĩnh</div>
+            <a class="control-header-create" href="/admin/sitehtmls/create">
+                <i class="fas fa-plus-circle"></i>
+                Tạo mới trang tĩnh
+                </a>
+        </div>
+        <div class="page-control-body">
+            <form class="form-submit-sitehtml" method="POST" action="/admin/sitehtmls/form-submit-action">     
+                <div class="page-control-features">
+                    <div class="check-all">
+                        <div class="check-all-item check-all-checkbox">
+                            <input class="check-all-input check-all-sitehtml" type="checkbox" onchange="CheckAll(this,'sitehtml-check-item','check-select-actions','submit-action-sitehtml');">
+                            <label class="check-all-lable" for="check-all">Chọn tất cả</label>
+                        </div>
+                        <select class="check-all-item check-select-actions" name="action" required onchange="CheckSelectAction('sitehtml-check-item','check-select-actions','submit-action-sitehtml')">
+                            <option value="">-- Hành động --</option>
+                            <option value="delete">Xóa</option>
+                            <option value="restore">Sửa</option>
+                        </select>
+                        <button class="check-all-item check-all-btn submit-action-sitehtml disabled" type="submit" disabled onclick="DeleteByCheck('form-submit-sitehtml','check-select-actions','sitehtml-check-item')" >Thực hiện</button>
+                    </div>
+                    <div class="page-control-search">
+                        <input type="text" name="searchonpage" placeholder="Tìm sản phẩm" onkeyup="SearchOnPage();">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead >
+                        <tr>
+                            <th>Chọn</th>
+                            <th>STT</th>
+                            <th style="width:30%;">TÊN TRANG TĨNH</th>
+                            <th>NGÀY TẠO</th>
+                            <th>HÀNH ĐỘNG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each SiteHtmlItem}}
+                        <tr>    
+                            <td>
+                                <input class="sitehtml-check-item" name="checkItem" value ="{{this.slug}}" type="checkbox" onclick="CompareToCheck('check-all-sitehtml','sitehtml-check-item','check-select-actions','submit-action-sitehtml');">
+                            </td>
+                            <td>{{sum @index 1}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{formatDate this.createdAt}}</td>
+                            <td>
+                                <a href="/admin/sitehtmls/edit/{{this._id}}" class="page-action-link page-action-edit" alt="Chỉnh sửa danh mục">
+                                    <i class="fas fa-pen"></i>
+                                    Sửa
+                                </a>
+                                <a href="/admin/sitehtmls/delete/{{this._id}}" idItem="{{this._id}}" class="page-action-link page-action-delete" onclick="DeleteDataItem(this,'sitehtmls')" >
+                                    <i class="fas fa-trash-alt"></i>
+                                    Xóa
+                                </a>                      
+                            </td>
+                        </tr>
+                        {{else}}
+                        <tr style="border-bottom:0;">
+                            <td colspan="5" style="padding-top:20px;border:0;">
+                                Trang tĩnh trống.
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<form method="POST" class="delete-form" action=""></form>

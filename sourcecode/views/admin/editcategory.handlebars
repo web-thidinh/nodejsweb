@@ -1,0 +1,52 @@
+<div class="edit-category">
+    <div class="page-edit">
+        <div class="page-edit-header">
+            <div class="edit-header-name">Chỉnh sửa danh mục sản phẩm</div>
+            <a class="edit-header-back" href="/admin/categories">
+                <i class="fas fa-arrow-circle-left"></i>
+                Trở về
+            </a>
+        </div>
+        <div class="page-edit-body">
+            <form method="POST" action="" class="form-edit" enctype='multipart/form-data'>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Tên danh mục:</div>
+                    <input class="form-edit-input" type="text" name="name"  value="{{MainCategoryItem.name}}" onkeyup="CreateSlug()">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="name">Ảnh thumnail:</div>
+                    <div class="form-upload-images form-upload-thumnail">
+                        <div class="form-upload-item">
+                            <img class="form-upload-img" src="/uploads/{{MainCategoryItem.image}}" alt="">
+                        </div>
+                    </div>
+                    <label class = "choose-image-btn" for="file">Chọn ảnh</label>
+                    <input class="form-edit-input" style="display:none" id="file" value="" type="file" name="image"  onchange="DisplayImageFile(this);">
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group" style="display:none">
+                    <div class="form-edit-name" for="image">Slug:</div>
+                    <input class="form-edit-input" type="text" name="slug" value="{{MainCategoryItem.slug}}" >
+                    <span class="form-edit-error"></span>
+                </div>
+                <div class="form-edit-group">
+                    <div class="form-edit-name" for="active">Trạng thái:</div>
+                    {{#if MainCategoryItem.status}}
+                        <input class="form-edit-checkbox" checked="checked" type="radio" name="status" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);" for="vehicle1">Avtive</label>
+                        <input class="form-edit-checkbox" type="radio" name="status" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)" for="vehicle1">UnAvtive</label>
+                    {{else}}
+                        <input class="form-edit-checkbox" type="radio" name="status" value="1">
+                        <label class="form-edit-lable" style="background-color: rgb(16, 161, 65);" for="vehicle1">Avtive</label>
+                        <input class="form-edit-checkbox" checked="checked" type="radio" name="status" value="0">
+                        <label class="form-edit-lable" style="background-color: rgb(212, 40, 40)" for="vehicle1">UnAvtive</label>
+                    {{/if}}
+                    <span class="form-edit-error"></span>
+                </div>
+                <button class="form-edit-submit" type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="product-detail">
+    <div class="grid">
+        <div class="product-detail-content">
+            <div class="product-detail-top">
+                <div class="row">
+                    <div class="col xl-5">
+                        <div class="product-detail-images">
+                            <img src="/uploads/{{ProductItem.image}}" alt="" class="product-detail-img">
+                        </div>
+                    </div>
+                    <div class="col xl-7">
+                        <form method="POST" action="/gio-hang/them-moi/{{ProductItem._id}}" class="product-detail-right">
+                            <div class="product-detail-info">
+                                <div class="product-info-item product-detail-name">{{ProductItem.name}}</div>
+                                <div class="product-info-item product-detail-price">Giá: {{formatmoney ProductItem.productprice}}</div>                       
+                                <div class="product-info-item product-number">
+                                    <label class="product-number-header" for="">Số lượng:</label>
+                                    <div class="product-number-body">
+                                        <button type="button" onclick="DecreaseProductNumber(this);" class="decrease-number"><i class="fas fa-minus"></i></button>
+                                        <input class="productnumber" onchange="SaveValue(this);" name="productnumber" type="number" value="1" autocomplete="off">
+                                        <button type="button" onclick="IncreaseProductNumber(this);" class="increase-number"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-detail-actions">
+                                <button type="submit" class="product-detail-action-item product-detail-save">
+                                    <i class="product-detail-cart fas fa-cart-plus"></i>
+                                    Lưu vào giỏ hàng
+                                </button>
+                                <a href="/dat-hang/{{ProductItem.slug}}" number = "abc" class="product-detail-action-item product-detail-buy">Đặt hàng</a>
+                                <div class="product-detail-action-item order-success">{{{SuccessIcon}}}{{Success}}</div>
+                                {{!-- <div class="order-success-layout"></div>
+                                <div class="order-success-message">Thành công</div> --}}
+                            </div>
+                        </form>
+                    </div>
+                </div> 
+            </div>                     
+            <div class="product-detail-body">
+                <div class="body-detail-item">
+                    <div class="body-detail-heading">CHI TIẾT VỀ SẢN PHẨM</div>        
+                    <div class="body-detail-text">
+                        <div class="detail-text-item">
+                            <lable class="detail-text-name">Danh mục sản phẩm</lable>
+                            <div class="detail-text-content">: {{ProductItem.parent}}</div>
+                        </div>     
+                        <div class="detail-text-item">
+                            <lable class="detail-text-name">
+                                Chất liệu:
+                            </lable>
+                            <div class="detail-text-content">
+                            </div>
+                        </div> 
+                        <div class="detail-text-item">
+                            <lable class="detail-text-name">
+                                Màu sắc:
+                            </lable>
+                            <div class="detail-text-content">
+                            </div>
+                        </div>          
+                    </div>
+                </div>
+                <div class="body-detail-item">
+                    <div class="body-detail-heading">MÔ TẢ SẢN PHẨM</div>               
+                    <div class="body-detail-text">
+                        <p class="body-detail-description">{{ProductItem.description}}</p>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-detail-realate">
+            <div class="detail-relate-header">
+                <div class="detail-relate-name">SẢN PHẨM LIÊN QUAN</div>
+            </div>
+            <div class="detail-relate-body">
+                <div class="row">
+                    {{#each ProductRelate}}
+                        <div class="col xl-2">
+                            <a href="/san-pham/{{this.slug}}" class="product-item">
+                                <div class="product-item-image">
+                                    <img src="/uploads/{{this.image}}" alt="">
+                                </div>
+                                <div class="product-item-detail">
+                                    <div class="product-name">{{this.name}}</div>
+                                    <div class="product-detail">
+                                        <div class="product-price">{{formatmoney this.productprice}}</div>
+                                    </div>
+                                    {{!-- <div class="product-item-actions">
+                                        <div class="product-action product-action-save">Lưu vào giỏ hàng</div>
+                                        <div class="product-action product-action-buy">Đặt hàng</div>
+                                    </div> --}}
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var SuccessMessage = document.querySelector('.order-success')
+    if(SuccessMessage.innerHTML !== ''){
+        SuccessMessage.style.display = 'block'
+        setTimeout(function(){
+            SuccessMessage.style.display = 'none'
+        },3000)
+    }
+    //Decrease number
+    function DecreaseProductNumber(ThisButton){
+        var ProductNumber = ThisButton.nextElementSibling
+        if(ProductNumber.value > 1){
+            ProductNumber.value = Number(ProductNumber.value) - 1
+        }
+    }
+    //Increase number
+    function IncreaseProductNumber(ThisButton){
+        var ProductNumber = ThisButton.previousElementSibling
+        ProductNumber.value = Number(ProductNumber.value) + 1
+    }
+</script>
